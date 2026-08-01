@@ -3,46 +3,52 @@ layout: archive
 title: "Beyond research"
 permalink: /personal/
 author_profile: true
-published: false
 ---
 
-<!--
-  ============================================================================
-  PLACEHOLDER PAGE - NOT PUBLISHED YET
+Two dogs run this household, and neither of them cares about number formats.
 
-  `published: false` in the front matter above keeps this page out of the built
-  site, and there is no navigation entry for it. Nothing here is live.
+<figure class="photo-hero reveal">
+  <img src="/images/dogs/winter-and-oreo.jpg"
+       alt="Winter, a white Old English Sheepdog, and Oreo, a black Labrador mix, both staring intently at a piece of sushi held in chopsticks."
+       loading="lazy" width="1276" height="1280">
+  <figcaption>The reliable consequence of trying to eat anything at home.</figcaption>
+</figure>
 
-  Claude wrote the structure but deliberately left the content blank, because
-  inventing your hobbies would be worse than leaving gaps. Fill in whichever
-  sections apply, delete the rest, then:
-
-    1. Remove the `published: false` line above
-    2. Uncomment the "Beyond research" entry in _data/navigation.yml
-
-  Photos go in images/ and are referenced as /images/your-photo.jpg
-  ============================================================================
--->
-
-Things I do when I'm not thinking about number formats.
-
-What I'm into
+Winter
 ======
 
-<!-- A few sentences. Music? Cooking? Climbing? Board games? Photography?
-     Whatever you'd actually mention to someone at a poster session. -->
+Winter is an Old English Sheepdog, almost two years old, and mostly fur. He has
+the sheepdog habit of positioning himself in doorways, which means he is
+simultaneously in every room and in the way of all of them.
 
-Where I've been
+<figure class="photo-single reveal">
+  <img src="/images/dogs/winter.jpg"
+       alt="Winter sprawled across a carpet in a doorway, tongue out, looking up at the camera."
+       loading="lazy" width="1400" height="1000">
+  <figcaption>Holding the doorway, as is tradition.</figcaption>
+</figure>
+
+Oreo
 ======
 
-<!-- Optional. If you like travel photos, drop them in images/ and use:
+Oreo is a black Labrador mix, almost four, and the senior partner of the
+operation. He is significantly more dignified than Winter, though the margin
+narrows considerably when food is involved.
 
-     ![Caption here](/images/photo-name.jpg)
+<div class="photo-grid">
+  <figure class="reveal">
+    <img src="/images/dogs/oreo-court.jpg"
+         alt="Oreo sitting on an empty outdoor basketball court on a clear autumn day, pine trees behind him."
+         loading="lazy" width="960" height="1280">
+    <figcaption>Empty court, good light, no notes.</figcaption>
+  </figure>
+  <figure class="reveal">
+    <img src="/images/dogs/oreo-cone.jpg"
+         alt="Oreo lying on a couch wearing a grey inflatable recovery collar, looking mildly put out."
+         loading="lazy" width="960" height="1280">
+    <figcaption>Recovering, and making sure everyone knows it.</figcaption>
+  </figure>
+</div>
 
-     Or delete this section entirely. -->
-
-Things I've enjoyed recently
-======
-
-<!-- Optional. A short list works well here: books, papers outside your area,
-     games, films. Cheap to maintain, and it makes the page feel current. -->
+If you meet me at a conference and the conversation stalls, this is a topic I can
+sustain indefinitely.

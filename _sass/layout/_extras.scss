@@ -149,6 +149,53 @@
   }
 }
 
+/* ==========================================================================
+   PHOTOS
+   ========================================================================== */
+
+.photo-hero,
+.photo-single,
+.photo-grid figure {
+  margin: 0 0 1.6em;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    border: 1px solid var(--global-border-color);
+  }
+
+  figcaption {
+    margin-top: 0.5em;
+    font-family: $caption-font-family;
+    font-size: $type-size-6;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--global-text-color);
+    opacity: 0.8;
+  }
+}
+
+/* The wide group shot reads better without competing for width. */
+.photo-hero img {
+  max-height: 34em;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2em;
+  margin-bottom: 1.6em;
+
+  img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Gentle fade-up on page load. Pure CSS, so there is no flash of hidden
    content the way a JS-applied class would produce.

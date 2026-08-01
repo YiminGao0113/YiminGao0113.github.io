@@ -17,7 +17,5 @@ main:
   - title: "CV"
     url: /cv/
 
-  # Uncomment once _pages/personal.md has real content and its
-  # `published: false` front matter has been removed.
-  # - title: "Beyond research"
-  #   url: /personal/
+  - title: "Beyond research"
+    url: /personal/
