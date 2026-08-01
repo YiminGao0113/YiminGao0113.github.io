@@ -1,0 +1,31 @@
+---
+layout: archive
+title: "Research"
+permalink: /projects/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p class="projects-intro">
+  A few threads I've been pulling on. They're all versions of the same question:
+  where should a computation happen, and how precisely does it really need to be done?
+</p>
+
+<div class="project-grid">
+  {% assign projects = site.projects | sort: "order" %}
+  {% for project in projects %}
+  <a class="project-card reveal" href="{{ base_path }}{{ project.url }}">
+    {% if project.status %}<span class="project-card__status">{{ project.status }}</span>{% endif %}
+    <h2 class="project-card__title">{{ project.title }}</h2>
+    <p class="project-card__tagline">{{ project.tagline }}</p>
+    <p class="project-card__excerpt">{{ project.excerpt }}</p>
+    {% if project.keywords %}
+    <ul class="project-card__keywords">
+      {% for kw in project.keywords %}<li>{{ kw }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <span class="project-card__more">Read more <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  {% endfor %}
+</div>

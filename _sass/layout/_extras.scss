@@ -1,0 +1,187 @@
+/* ==========================================================================
+   PROJECT CARDS + MOTION
+   Site-specific additions on top of the Academic Pages theme.
+   Everything here uses the theme's CSS custom properties, so it follows the
+   light/dark toggle automatically.
+   ========================================================================== */
+
+.projects-intro {
+  margin-bottom: 2em;
+  font-size: $type-size-4;
+  line-height: 1.5;
+  color: var(--global-text-color);
+  opacity: 0.85;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25em;
+  margin-bottom: 2em;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4em 1.5em;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background-color: var(--global-bg-color);
+  /* Neutral overlay: darkens the light theme and lightens the dark theme by
+     the same small amount, so cards read as raised in both. */
+  background-image: linear-gradient(rgba(128, 128, 128, 0.05),
+                                    rgba(128, 128, 128, 0.05));
+  text-decoration: none !important;
+  color: var(--global-text-color) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
+              border-color 0.2s ease-out;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--global-link-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-link-color);
+    outline-offset: 2px;
+  }
+}
+
+.project-card__status {
+  align-self: flex-start;
+  margin-bottom: 0.7em;
+  padding: 0.22em 0.7em;
+  border-radius: 999px;
+  /* Neutral tint rather than the link color: white-on-#52adc8 only reaches
+     about 2.2:1, which fails WCAG AA for text this small. */
+  background-color: rgba(128, 128, 128, 0.18);
+  color: var(--global-text-color);
+  font-size: $type-size-7;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.project-card__title {
+  margin: 0 0 0.2em;
+  font-size: $type-size-3;
+  line-height: 1.2;
+  color: var(--global-text-color);
+}
+
+.project-card__tagline {
+  margin: 0 0 0.7em;
+  font-size: $type-size-5;
+  font-weight: bold;
+  line-height: 1.35;
+}
+
+.project-card__excerpt {
+  margin: 0 0 1em;
+  font-size: $type-size-6;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.project-card__keywords {
+  margin: 0 0 1.1em;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+
+  li {
+    margin: 0;
+    padding: 0.15em 0.6em;
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+    font-size: $type-size-7;
+    opacity: 0.8;
+  }
+}
+
+.project-card__more {
+  margin-top: auto;
+  font-size: $type-size-6;
+  font-weight: bold;
+  /* base-color, not link-color: it is the darker of the two and clears AA
+     against the card background in the light theme. */
+  color: var(--global-base-color);
+}
+
+/* Nudge the arrow on hover -- small, and only for pointer users. */
+@media (hover: hover) {
+  .project-card:hover .project-card__more span {
+    display: inline-block;
+    transform: translateX(4px);
+    transition: transform 0.2s ease-out;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reveal-on-scroll. Elements marked .reveal start faded/offset and are
+   un-hidden by assets/js/enhancements.js.
+
+   The .js gate matters: without JavaScript the rule never applies, so content
+   stays visible instead of being permanently invisible.
+   -------------------------------------------------------------------------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger cards within a grid so they don't all land at once. */
+.js .project-grid .reveal {
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 0.06}s;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Gentle fade-up on page load. Pure CSS, so there is no flash of hidden
+   content the way a JS-applied class would produce.
+   -------------------------------------------------------------------------- */
+
+@keyframes page-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.page__content {
+  animation: page-fade-up 0.4s ease-out both;
+}
+
+/* Respect users who have asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .page__content {
+    animation: none;
+  }
+
+  .js .reveal,
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .project-card {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:focus-visible {
+    transform: none;
+  }
+}
