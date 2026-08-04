@@ -34,10 +34,6 @@ Selected publications
 
 [Full publication list &rarr;](/publications/)
 
-Patent
-======
-- K. Skadron, L. Wu, A. Shekar, and **Y. Gao**. "[Membrane: Accelerating Database Analytics with DRAM-PIM Filtering](https://patents.google.com/patent/US20250377803A1/en)." U.S. Patent Application 19/233,680, 2025.
-
 Get in touch
 ======
 I'm always up for talking about accelerators, quantization, or hardware security. Reach me at [yg9bq@virginia.edu](mailto:yg9bq@virginia.edu).
