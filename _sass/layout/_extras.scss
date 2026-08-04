@@ -71,6 +71,40 @@ html[data-theme="dark"] {
 }
 
 /* ==========================================================================
+   THEME TOGGLE, PINNED RIGHT
+   The toggle is already the last item in the nav (the greedy-nav script keeps
+   .persist.tail at the end), but .visible-links is `display: table`, so the row
+   is only as wide as its content and the toggle ends up hugging the last link.
+
+   Absolute positioning is used rather than flex or width:100%: the greedy-nav
+   script decides when to collapse links by comparing $vlinks.width() against
+   the nav width, and either of those would make the list always report the full
+   container width, so it would collapse every link immediately. Taking the
+   toggle out of flow leaves that measurement alone.
+
+   Only above $large. Below it the nav collapses and the overflow button lives
+   at the right edge, which a pinned toggle would sit on top of. The reserved
+   padding keeps the links from running underneath.
+   ========================================================================== */
+
+@include breakpoint($large) {
+  .greedy-nav {
+    padding-right: 3rem;
+  }
+
+  .greedy-nav #theme-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    a {
+      margin-right: 0;
+    }
+  }
+}
+
+/* ==========================================================================
    TECH TYPE
    Monospace on the structural surfaces only -- site title, nav, headings, card
    chrome, figure labels. Body prose stays sans-serif: the project pages run to
