@@ -29,6 +29,21 @@ html[data-theme="dark"] {
 }
 
 /* ==========================================================================
+   PAGE WIDTH
+   .page (the `single` layout: homepage, project pages, publication pages)
+   ships with `suffix(2 of 12)`, reserving ~17% of the width on the right for a
+   table-of-contents rail this site never renders. .archive, which every other
+   page uses, has no such suffix -- hence the homepage looking narrower than
+   everything else. Reclaim it so both layouts line up.
+   ========================================================================== */
+
+@include breakpoint($large) {
+  .page {
+    padding-right: 0;
+  }
+}
+
+/* ==========================================================================
    TECH TYPE
    Monospace on the structural surfaces only -- site title, nav, headings, card
    chrome, figure labels. Body prose stays sans-serif: the project pages run to
