@@ -16,23 +16,23 @@
 
    Contrast against #f7f4f0: body text 12:1, links 5.6:1, muted text 5.2:1. */
 :root {
-  --global-bg-color                   : #f7f4f0;
-  --global-footer-bg-color            : #efeae3;
-  --global-border-color               : #ddd5cb;
-  --global-dark-border-color          : #c6bdb1;
-  --global-code-background-color      : #f0ebe4;
+  --global-bg-color                   : #f1eadd;
+  --global-footer-bg-color            : #e7dfce;
+  --global-border-color               : #d6cbb6;
+  --global-dark-border-color          : #bcae95;
+  --global-code-background-color      : #eae1d0;
   --global-code-text-color            : #3b3733;
-  --global-fig-caption-color          : #6b665f;
+  --global-fig-caption-color          : #645f56;
   --global-base-color                 : #256a7c;
   --global-link-color                 : #256a7c;
   --global-link-color-hover           : #1a4f5d;
   --global-link-color-visited         : #5c6b8a;
-  --global-masthead-link-color        : #4a4640;
+  --global-masthead-link-color        : #46413a;
   --global-masthead-link-color-hover  : #256a7c;
   --global-text-color                 : #33302c;
-  --global-text-color-light           : #6b665f;
-  --global-thead-color                : #efeae3;
-  --card-bg                           : #fffdfa;
+  --global-text-color-light           : #645f56;
+  --global-thead-color                : #e7dfce;
+  --card-bg                           : #fbf7ee;
 }
 
 html[data-theme="dark"] {
