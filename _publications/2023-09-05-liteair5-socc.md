@@ -7,5 +7,5 @@ excerpt: 'A system-level framework for designing and modeling RISC-V cores exten
 date: 2023-09-05
 venue: 'IEEE International System-on-Chip Conference (SOCC)'
 paperurl: 'https://ieeexplore.ieee.org/document/10257058'
-citation: 'Y. Gao, S. Mosanu, M. N. Sakib, V. Verma, X. Guo, and M. R. Stan. (2023). &quot;LiteAIR5: A System-Level Framework for the Design and Modeling of AI-Extended RISC-V Cores.&quot; <i>IEEE International System-on-Chip Conference (SOCC)</i>.'
+citation: '<b>Y. Gao</b>, S. Mosanu, M. N. Sakib, V. Verma, X. Guo, and M. R. Stan. (2023). &quot;LiteAIR5: A System-Level Framework for the Design and Modeling of AI-Extended RISC-V Cores.&quot; <i>IEEE International System-on-Chip Conference (SOCC)</i>.'
 ---

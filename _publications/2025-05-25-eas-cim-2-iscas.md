@@ -7,5 +7,5 @@ excerpt: 'Event-driven asynchronous stream-based compute-in-memory kernels suppo
 date: 2025-05-25
 venue: 'IEEE International Symposium on Circuits and Systems (ISCAS)'
 paperurl: 'https://ieeexplore.ieee.org/document/11043682'
-citation: 'R. Sreekumar, M. Morsali, N. Solomon, Y. Gao, M. Park, K. Lee, et al. (2025). &quot;EAS-CiM 2.0: Event-driven Asynchronous Stream-based Compute-in-Memory Kernels with Scalable Precision.&quot; <i>IEEE International Symposium on Circuits and Systems (ISCAS)</i>.'
+citation: 'R. Sreekumar, M. Morsali, N. Solomon, <b>Y. Gao</b>, M. Park, K. Lee, et al. (2025). &quot;EAS-CiM 2.0: Event-driven Asynchronous Stream-based Compute-in-Memory Kernels with Scalable Precision.&quot; <i>IEEE International Symposium on Circuits and Systems (ISCAS)</i>.'
 ---

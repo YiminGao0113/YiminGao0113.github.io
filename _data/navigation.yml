@@ -14,8 +14,10 @@ main:
   - title: "Teaching"
     url: /teaching/
 
+  # Links straight to the PDF -- there is no HTML CV page. One source of
+  # truth, so the site can't drift out of sync with the resume.
   - title: "CV"
-    url: /cv/
+    url: /files/Yimin_Gao_CV.pdf
 
   - title: "Beyond research"
     url: /personal/
