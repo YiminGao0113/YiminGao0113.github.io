@@ -14,15 +14,14 @@ $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
 /* System typefaces.
-   The whole site runs on the monospace stack, so $serif and $sans-serif are
-   aliased to it rather than the theme's originals. Setting them here means the
-   ~30 rules across _sass that reference these variables all follow, instead of
-   needing a selector-by-selector override. System fonts only, no web request. */
+   $techmono is applied to the site's chrome only -- masthead, nav, headings,
+   card titles, figure labels -- by the rules in layout/_extras.scss. Body prose
+   deliberately stays sans-serif. System fonts only, no web request. */
 $techmono                   : "JetBrains Mono", "Fira Code", "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
 
-$serif                      : $techmono;
-$sans-serif                 : $techmono;
-$monospace                  : $techmono;
+$serif                      : Georgia, Times, serif;
+$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
