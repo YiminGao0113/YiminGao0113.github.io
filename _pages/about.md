@@ -9,12 +9,12 @@ redirect_from:
 
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), working with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
 
-I work across the whole stack rather than one slice of it — RTL design, NPU and SoC integration, compilers and runtimes on FPGA, and silicon-aware modeling. That's deliberate. A design can look great in a spreadsheet and then lose badly on real hardware to something the model never accounted for, and you usually only find that out by building it and measuring.
+I work across the whole stack rather than one slice of it — RTL design, NPU and SoC integration, compilers and runtimes on FPGA, and silicon-aware modeling. That range is what makes end-to-end evaluation possible: cycle-accurate and energy models calibrated against measured hardware, and individual design changes isolated on a real FPGA platform rather than assessed in simulation alone.
 
 What I work on
 ======
 - **AI accelerator architecture**
-- **Hardware–software co-design**, including hardware-aware quantization
+- **Hardware–software co-design**
 - **Hardware security**
 
 Current projects
