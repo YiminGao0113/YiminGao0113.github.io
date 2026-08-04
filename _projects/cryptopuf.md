@@ -3,31 +3,43 @@ title: "CryptoPUF"
 collection: projects
 order: 5
 permalink: /projects/cryptopuf
-tagline: "A strong PUF that machine learning can't model, built from a weak one"
+tagline: "A weak PUF and a crypto core, each covering the other's weakness"
 status: "IEEE RFID-TA 2024"
-keywords: ["hardware security", "PUF", "ML-resilient", "RFID"]
-excerpt: "Strong PUFs are convenient and breakable; weak PUFs are sturdy and inconvenient. This one tries to be both."
+keywords: ["hardware security", "PUF", "ML-resilient", "IoT", "RFID"]
+excerpt: "Strong PUFs fall to machine learning. Crypto cores resist ML but have no intrinsic key. Put them together and each one's weakness is the other's strength."
 ---
 
-Physical unclonable functions turn manufacturing variation into an identity: same
-design, same mask, subtly different silicon, and that difference becomes a key you
-never have to store. It's a lovely idea, and it has an awkward problem.
+IoT security has an awkward economics problem: the devices that most need
+protecting — battery-powered sensors, UHF RFID tags — are the ones with the least
+area and energy to spend on it. Physical unclonable functions are an appealing
+answer, since they derive a unique "digital fingerprint" from fabrication
+variation rather than from a key you have to store.
 
-*Strong* PUFs accept many challenges and are convenient for authentication — but
-their challenge–response behavior is a function, and functions can be learned.
-Feed a machine learning model enough challenge–response pairs and it will predict
-the rest, which is exactly the attack the PUF was supposed to prevent. *Weak* PUFs
-resist this nicely but only offer a handful of responses, which isn't enough to
-authenticate with.
+The problem is that machine learning got good. Modern ML models can learn the
+challenge-response behavior of conventional strong PUFs from collected CRPs, which
+defeats the point. Cryptographic algorithms don't have this weakness — you can't
+regress your way through a block cipher — but they have the opposite one: no
+intrinsic key, so you're back to storing secrets on chip.
 
-CryptoPUF gets the strong-PUF interface out of weak-PUF material. A weak PUF
-supplies the device-unique secret, and a crypto core stands between that secret
-and the outside world, so what an attacker collects is the output of a
-cryptographic function rather than a learnable analog mapping. The modeling attack
-loses its foothold.
+CryptoPUF puts a **weak PUF together with a cryptographic encryption core** so each
+covers for the other. Read one way, it's a crypto-enhanced PUF: the crypto core
+shields the weak PUF from direct exposure while massively expanding the number of
+usable CRPs. Read the other way, it's a PUF-enhanced crypto core with intrinsic key
+generation, which removes the need for on-chip key storage entirely.
 
-The whole thing is built to stay small, because the devices that need this most —
-RFID tags, embedded sensors — are exactly the ones with no area or power to spare.
+Against Logistic Regression, Support Vector Machine, and Multilayer Perceptron
+attacks it holds at **near-ideal 50% prediction accuracy** — attackers do no better
+than guessing — while keeping resource utilization low. Compared to published
+alternatives, it's the **most compact ML-resilient PUF** we're aware of.
+
+Reliability
+======
+
+A PUF is only useful if it gives the same answer every time, across temperature
+and voltage corners and over the device's life, and raw PUF bits don't. My related
+circuit work designs delay-based CMOS PUFs at the transistor level with Monte
+Carlo variability analysis, and screens for the cells that stay stable — cheaply,
+and in a fully digital way.
 
 *Published at the IEEE International Conference on RFID Technology and
 Applications (RFID-TA), 2024. Work with J. Chilaka, E. Pantoja, R. Klenke, and

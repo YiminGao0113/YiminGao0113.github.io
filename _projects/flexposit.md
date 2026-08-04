@@ -36,16 +36,23 @@ constrain each other, and picking them separately leaves accuracy behind.
 
 **Architecture side:** a unified bit-serial systolic array with lightweight
 per-column decoders and a global precision controller. It tunes precision
-continuously from 4 to 8 bits while keeping the systolic dataflow fully regular.
-That's the part that makes the software flexibility survive contact with hardware
-instead of being flattened out by it.
+continuously from 4 to 8 bits while keeping the systolic dataflow fully regular —
+precision scales *temporally*, per GEMM kernel, so it never introduces spatial
+irregularity into the array. That's what makes the software flexibility survive
+contact with hardware instead of being flattened out by it.
+
+I led the design and verification of the array in Verilog, and built a custom
+cycle-accurate simulator with integrated memory and energy modeling (CACTI,
+Ramulator) to check architectural decisions against end-to-end inference behavior
+rather than against peak numbers.
 
 What it gets you
 ======
 
 FlexPosit reaches near-FP16 accuracy at **sub-5-bit average weight precision**. At
 matched accuracy, it delivers up to **1.8× higher throughput** and **2× lower
-energy** than state-of-the-art LLM inference accelerators.
+energy** than state-of-the-art LLM inference accelerators, evaluated across LLaMA,
+OPT, Phi, and Yi.
 
 *To appear at the IEEE/ACM International Symposium on Microarchitecture
 (MICRO) 2026. Work with L. Dai, J. Yin, X. Guo, and M. R. Stan.*

@@ -3,47 +3,67 @@ title: "EdgeScope"
 collection: projects
 order: 2
 permalink: /projects/edgescope
-tagline: "Host-aware design space exploration for edge NPUs"
-status: "In submission · formerly FlexNPU"
-keywords: ["NPU", "design space exploration", "FPGA", "full-stack profiling", "host bottleneck"]
-excerpt: "Most DSE tools model the accelerator alone and treat the host CPU as somebody else's problem. On real edge workloads, the host is often what's actually slowing you down."
+tagline: "Host-aware design space exploration for edge NPU systems"
+status: "In submission"
+keywords: ["NPU", "design space exploration", "FPGA", "host bottleneck", "IREE / MLIR"]
+excerpt: "Existing DSE tools model the accelerator in isolation. On real edge workloads the host CPU is frequently what's actually setting the wall — a bottleneck those tools structurally cannot see."
 ---
 
-If you want to know how big to make your NPU, you reach for a design space
-exploration tool. Almost all of them model the accelerator in isolation: compute
-throughput against memory bandwidth, with the host processor sitting outside the
-design space entirely.
+On an edge NPU, the host CPU is not a spectator. It sequences the accelerator
+through a compiled operator stream and does substantial per-operator work of its
+own, and on real workloads that host work frequently dominates end-to-end latency.
 
-That's a bad fit for edge NPU systems. The host CPU isn't a spectator — it
-sequences the accelerator through a compiled operator stream and does real
-per-operator work along the way. On actual workloads that host work frequently
-dominates end-to-end latency. It's a bottleneck the existing tools structurally
-cannot see, because the host isn't in their model.
+Design space exploration tools don't see any of this. Timeloop, MAESTRO, roofline
+analysis — they model the accelerator in isolation, compute against memory, with
+the host outside the design space entirely. It isn't that they weigh the host
+wrongly; they structurally cannot represent it.
 
-EdgeScope puts it in. It models four resources — **compute, memory, dispatch, and
-host** — and, given a fixed area budget, automatically recommends how to spend it.
+That has consequences you can measure. Running the incumbent view as a fair
+ablation of our own silicon-validated model, on **four of six** real workloads it
+recommends spending area on a bigger array and more bandwidth, believes it is
+buying roughly 4×, and delivers **1.00×** — the workloads were host-bound the whole
+time. The confidence is genuine. The speedup is baseline.
 
-The part I care most about is that it's grounded in real silicon rather than
-assumptions. EdgeScope is built on the FlexNPU platform, an FPGA system where
-every configuration runs one unchanged compiled binary. That means any single
-design change can be measured end-to-end in isolation, and the model's predictions
-are calibrated and validated against hardware across six models.
+EdgeScope models the host as a first-class resource alongside compute, memory, and
+dispatch, and gets all six right.
 
-Two axes, and you need both
+Grow, then cover
 ======
 
-EdgeScope explores two coupled axes: **sizing** (making the operators you already
-offload run faster) and **coverage** (moving whole operator classes onto the
-accelerator to relieve the host).
+EdgeScope explores two coupled axes: **sizing** (make the operators you already
+offload run faster) and **coverage** (move whole operator classes onto the
+accelerator to relieve the host). Given a fixed area budget, it allocates across
+both automatically.
 
-The interesting finding is that these don't decompose. For MobileBERT, the optimum
-is a larger array *combined with* an on-array rescale unit, reaching **2.86×** —
-and neither axis alone gets there. Enlarging the array by itself just exposes a
-host bottleneck, which the coverage unit is then what relieves. Optimize either
-one on its own and you'll stop short of the real answer.
+They don't decompose, and MobileBERT shows why. Start at a small array and the
+model is compute-bound, so growing the array is the right move and a coverage unit
+would buy nothing. Grow it, and at N=32 the bottleneck **flips to the host** — the
+CPU-side rescale work was always there, just hidden behind compute. Now the rescale
+unit, worthless three steps earlier, is the best remaining spend. Add it and the
+wall drops again: **2.86×**, reachable only with both.
 
-It also knows when to say no. EdgeScope recommends coverage on the workloads where
-coverage helps and declines to spend silicon where it doesn't, and its automated
-allocator matches exhaustive search — in wall-time — on all six workloads.
+Explore either axis alone and you stop short. Array-alone runs into the host wall.
+Coverage-alone does nothing while compute is still the bottleneck. Only a loop
+watching the bottleneck *shift* finds "grow, then cover" — and the allocator finds
+it rather than being told, discovering the configuration over four iterations.
 
-*In submission. Previously FlexNPU.*
+It also knows when to spend nothing. On a workload where no amount of silicon
+helps, it stops after one iteration and declines the budget, from the same code
+path — no special case.
+
+Grounded in silicon
+======
+
+EdgeScope is built on FlexNPU, an FPGA platform I developed on a Xilinx Kria
+KV260, with slots on distinct microarchitectures — an output-stationary systolic
+GEMM array, a LUT-based softmax unit, parallel MAC lanes for depthwise
+convolution — and an IREE/MLIR compilation flow.
+
+The property that makes it useful as a measurement apparatus is that portable
+bytecode binds to the *slot contract* rather than to a particular tile size, so
+every configuration runs one unchanged compiled binary. Any single design change
+can therefore be measured end-to-end in isolation, with nothing else moving. The
+cost model is calibrated on silicon anchors and validated against held-out models,
+identifying the binding resource correctly on all six.
+
+*In submission.*

@@ -3,28 +3,48 @@ title: "Edge-MPQ"
 collection: projects
 order: 3
 permalink: /projects/edge-mpq
-tagline: "Layer-wise mixed-precision quantization, co-designed with the hardware that runs it"
+tagline: "Mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can do"
 status: "IEEE Transactions on Computers 2024"
-keywords: ["quantization", "mixed precision", "edge inference", "design space exploration"]
-excerpt: "Not every layer deserves the same number of bits — and the inference unit should be built to exploit that."
+keywords: ["mixed-precision quantization", "RISC-V", "ISA co-design", "INT2–INT8", "14nm"]
+excerpt: "Layer-wise mixed precision beats uniform quantization — but the search has to know what the hardware supports, and the hardware has to actually support it."
 ---
 
-Quantization research and quantization hardware tend to be written by different
-people, and it shows. Algorithm papers propose elegant per-layer bitwidth
-assignments; the accelerators they run on support two or three widths, so most of
-that elegance evaporates on contact with silicon.
+Layer-wise mixed-precision quantization strikes a better accuracy-efficiency
+balance than giving every layer the same bitwidth. The catch is that existing MPQ
+strategies tend to either ignore hardware entirely or cost so much to run that you
+can't deploy them at the edge. And researchers usually commit up front to either
+post-training quantization or quantization-aware training, based on the target
+bitwidth or the hardware, and then live with that choice.
 
-Edge-MPQ treats the two halves as one problem. On the algorithm side, it assigns
-bitwidths layer by layer, based on how much precision each layer's sensitivity
-actually justifies. On the hardware side, it pairs that with versatile inference
-units that are tightly integrated into the edge pipeline and genuinely support the
-mixed widths the search produces — so a layer assigned 4 bits costs less than a
-layer assigned 8, rather than both being padded to the same datapath.
+Edge-MPQ attacks both halves.
 
-The earlier GLSVLSI work mapped out the design space this sits in: which
-combinations of bitwidth assignment and inference-unit organization are actually
-reachable, and where the cliffs are. The journal version carries that through to a
-full layer-wise scheme with the inference units built to match.
+The hardware
+======
+
+Versatile MPQ inference units supporting **INT2–INT8 and INT16**, built on a
+hierarchical multiplier architecture and integrated tightly into a RISC-V
+processor pipeline through micro-architecture and ISA co-design. The underlying
+move is re-architecting a conventional 16-bit integer multiplier into a SIMD
+mixed-precision dot-product unit via hardware reuse and shift-add composition —
+so the low-precision modes reuse the same silicon rather than demanding their own.
+
+Synthesized in **14nm**, it delivers **15.5×–47.7×** speedup over the baseline
+RV64IMA core on a single convolution layer kernel, reaching **2.86 GOPS** and
+**20.51 TOPS/W** — ahead of contemporary state-of-the-art edge MPQ hardware.
+
+The search
+======
+
+Alongside it, an MPQ search algorithm that folds in both hardware awareness and
+*training necessity* — whether a given layer actually needs QAT or can get away
+with PTQ, rather than deciding once for the whole network. It samples layer-wise
+sensitivities using a set of new metrics and runs a heuristic search, landing
+**2.2%–6.7%** higher inference accuracy than state-of-the-art MPQ strategies under
+comparable hardware constraints.
+
+Expanding the search space with a dynamic programming strategy — finer-grained
+accuracy intervals and multi-dimensional search — adds a further **1.3%+** over
+greedy search.
 
 *Published in IEEE Transactions on Computers, 2024, with earlier design space
 exploration at GLSVLSI 2023. Work with X. Zhao, R. Xu, V. Verma, M. R. Stan, and

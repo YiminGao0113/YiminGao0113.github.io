@@ -3,30 +3,28 @@ title: "Membrane"
 collection: projects
 order: 6
 permalink: /projects/membrane
-tagline: "Filtering database queries inside DRAM, before the data ever moves"
+tagline: "Bit-serial comparison inside DRAM, so most rows never leave memory"
 status: "ACM TACO 2025 · US patent pending"
-keywords: ["processing-in-memory", "DRAM", "database analytics", "schema denormalization"]
-excerpt: "Analytical queries read enormous amounts of data and throw most of it away. Better to throw it away early."
+keywords: ["processing-in-memory", "DRAM", "bit-serial", "database analytics"]
+excerpt: "Analytical queries read enormous amounts of data and discard most of it. Better to discard it before it crosses the bus."
 ---
 
-Analytical database queries have a wasteful shape. A scan pulls gigabytes off
-memory, a filter discards the overwhelming majority of it, and the rows that
-survive are a small fraction of what was moved. All that bandwidth is spent
-transporting data whose only destiny is to be rejected.
+Analytical database queries have a wasteful shape. A scan pulls gigabytes out of
+memory, a filter throws almost all of it away, and only a small fraction of what
+moved was ever going to matter. Membrane pushes that filter into DRAM itself, so
+rows are rejected in place and never cross the memory bus.
 
-Membrane pushes the filter down into DRAM itself. Processing-in-memory puts simple
-comparison logic where the data already is, so rows can be rejected in place and
-never cross the memory bus at all. What reaches the processor is closer to the
-answer than to the raw table.
+My contribution was the **bit-serial comparison circuit** in the data buffers.
+Comparison runs MSB to LSB, one bit position at a time, across the full width of
+the memory band. Two things fall out of doing it that way. It's very cheap in area,
+since a bit-serial comparator is small and you need one per column rather than a
+full-width datapath. And it often finishes early: most comparisons are decided in
+the high-order bits, so once a row's fate is determined there's no reason to keep
+walking down to the LSB.
 
-The second half of the idea is schema denormalization. Normalized schemas are good
-database design and bad PIM workloads — joins scatter the data a filter needs
-across tables that live in different places. Denormalizing puts the relevant
-columns where the in-memory filter can actually reach them, which is what makes the
-filtering pay off.
-
-This is joint work with a larger team, and it's the project that most changed how I
-think about where computation should live relative to data.
+The broader project pairs this in-memory filtering with schema denormalization,
+since normalized schemas scatter the columns a filter needs across tables — good
+database design, bad PIM workload.
 
 *Published in ACM Transactions on Architecture and Code Optimization (TACO), 2025,
 with A. Shekar, K. Gaffney, M. Prammer, K. Kiyawat, L. Wu, H. Caminal, Z. Fan, and

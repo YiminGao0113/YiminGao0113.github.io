@@ -3,26 +3,36 @@ title: "LiteAIR5"
 collection: projects
 order: 4
 permalink: /projects/liteair5
-tagline: "A system-level framework for designing and modeling AI-extended RISC-V cores"
+tagline: "An AI-extended RISC-V core, and the end-to-end framework to design one"
 status: "IEEE SOCC 2023"
-keywords: ["RISC-V", "system-level modeling", "design space exploration", "AI extensions"]
-excerpt: "Answering \"what happens if I bolt this accelerator onto a RISC-V core?\" without taping out to find out."
+keywords: ["RISC-V", "ISA extensions", "SoC generation", "FPGA emulation", "edge AI"]
+excerpt: "Traditional edge AI hardware either isn't fast enough or costs too much power and area. A third option needs tooling that sees the whole system."
 ---
 
-Adding AI acceleration to a RISC-V core sounds like a local decision and almost
-never is. A new instruction or a tightly-coupled unit changes the memory traffic,
-the pipeline pressure, and the software stack all at once, and the interesting
-question — is this worth the area? — can't be answered by looking at the
-accelerator in isolation.
+Machine learning at the edge has outgrown what general-purpose embedded cores can
+do, but the usual alternatives aren't satisfying either: traditional edge AI
+hardware tends to either fall short on performance or pay for its performance in
+power and area.
 
-LiteAIR5 is the framework I wanted to exist while trying to answer that question.
-It models AI-extended RISC-V cores at the system level, so you can vary how the
-acceleration is attached and see the consequences propagate through the whole
-design rather than just the datapath you changed.
+LiteAIR5 starts from a RISC-V core with ISA extensions aimed at the workloads that
+actually matter, reaching up to **37× speedup on a GEMM kernel** over a baseline
+RISC-V core — largely by cutting instruction count and memory traffic rather than
+by brute force. I built it inside a full FPGA-based SoC on an open-source
+platform, evaluated under the tight memory constraints a real embedded system
+imposes rather than in a vacuum.
 
-The point is to make the exploration cheap enough to actually do. Building one
-configuration properly is expensive; comparing a dozen of them is what tells you
-which one to build.
+The framework
+======
+
+The core is the demonstration; the framework is the point. LiteAIR5 covers
+system-level modeling of ISA-extended RISC-V cores, SoC generation, compiler
+support, and FPGA emulation — end to end.
+
+That matters because adding an accelerator to a core is never a local change. A
+new instruction shifts memory traffic, pipeline pressure, and the software stack
+all at once, and the question you actually care about — is this worth the area? —
+can't be answered by looking at the datapath alone. LiteAIR5 lets you develop
+optimized AI hardware while seeing the effects ripple through the whole system.
 
 *Published at the IEEE International System-on-Chip Conference (SOCC), 2023. Work
 with S. Mosanu, M. N. Sakib, V. Verma, X. Guo, and M. R. Stan.*
