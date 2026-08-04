@@ -166,12 +166,12 @@
   }
 }
 
-/* A thin spectrum under the masthead -- the six project accents in order.
+/* A thin accent under the masthead. Kept to one hue family -- a six-colour
+   spread across a single strip reads as a flag rather than as branding.
    border-image keeps it to the existing border box, so nothing reflows. */
 .masthead {
   border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg,
-      #f59e0b, #10b981, #3b82f6, #a78bfa, #ef4444, #06b6d4) 1;
+  border-image: linear-gradient(90deg, #0ea1c5, #3b82f6) 1;
 }
 
 /* ==========================================================================
