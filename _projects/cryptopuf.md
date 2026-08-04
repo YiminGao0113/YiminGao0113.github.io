@@ -4,7 +4,7 @@ collection: projects
 order: 5
 permalink: /projects/cryptopuf
 tagline: "A weak PUF and a crypto core, each covering the other's weakness"
-status: "IEEE RFID-TA 2024"
+status: "IEEE RFID-TA 2024 · GF12 tapeout ongoing"
 keywords: ["hardware security", "PUF", "ML-resilient", "IoT", "RFID"]
 excerpt: "Strong PUFs fall to machine learning. Crypto cores resist ML but have no intrinsic key. Put them together and each one's weakness is the other's strength."
 ---
@@ -40,6 +40,8 @@ and voltage corners and over the device's life, and raw PUF bits don't. My relat
 circuit work designs delay-based CMOS PUFs at the transistor level with Monte
 Carlo variability analysis, and screens for the cells that stay stable — cheaply,
 and in a fully digital way.
+
+Follow-on silicon is currently being taped out in GlobalFoundries 12nm.
 
 *Published at the IEEE International Conference on RFID Technology and
 Applications (RFID-TA), 2024. Work with J. Chilaka, E. Pantoja, R. Klenke, and

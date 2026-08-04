@@ -4,7 +4,7 @@ collection: projects
 order: 1
 permalink: /projects/flexposit
 tagline: "Precision as a continuously tunable hardware resource"
-status: "MICRO 2026"
+status: "MICRO 2026 · GF12 tapeout ongoing"
 keywords: ["posit arithmetic", "LLM inference", "mixed-precision quantization", "bit-serial systolic array"]
 excerpt: "Mixed-precision quantization gives you rich tradeoffs in software, then wrecks the regular dataflow accelerators depend on. FlexPosit gets both."
 ---
@@ -53,6 +53,8 @@ FlexPosit reaches near-FP16 accuracy at **sub-5-bit average weight precision**. 
 matched accuracy, it delivers up to **1.8× higher throughput** and **2× lower
 energy** than state-of-the-art LLM inference accelerators, evaluated across LLaMA,
 OPT, Phi, and Yi.
+
+The design is currently being taped out in GlobalFoundries 12nm.
 
 *To appear at the IEEE/ACM International Symposium on Microarchitecture
 (MICRO) 2026. Work with L. Dai, J. Yin, X. Guo, and M. R. Stan.*
