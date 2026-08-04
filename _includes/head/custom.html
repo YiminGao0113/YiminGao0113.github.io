@@ -3,10 +3,10 @@
 <!-- start custom head snippets -->
 
 <!-- Apply a saved theme choice before first paint.
-     The <html> tag ships with data-theme="dark" (site.default_theme), so dark is
-     what a first-time visitor gets. Anyone who has used the toggle has their
-     choice in localStorage, and without this they would see a flash of dark
-     before main.min.js corrected it on DOM ready. -->
+     site.default_theme decides what a first-time visitor sees, by controlling
+     whether the <html> tag ships with data-theme="dark". Anyone who has used
+     the toggle has their choice in localStorage, and without this they would
+     see a flash of the default before main.min.js corrected it on DOM ready. -->
 <script>
   (function () {
     try {

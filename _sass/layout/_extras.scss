@@ -78,11 +78,16 @@ html[data-theme="dark"] {
    ========================================================================== */
 
 .author__content {
-  margin-bottom: 1.5em;
+  margin-bottom: 0.7em;
 }
 
-.author__urls-wrapper {
-  padding-top: 0.25em;
+/* The theme sets `.sidebar .author__name` at two classes, which outranks the
+   single-class rule in the TECH TYPE block above -- so the name was still
+   sans-serif while the rest of the chrome was monospace. Matched here, and
+   bumped a step from $type-size-5. */
+.sidebar .author__name {
+  font-family: $techmono;
+  font-size: $type-size-4;
 }
 
 /* ==========================================================================

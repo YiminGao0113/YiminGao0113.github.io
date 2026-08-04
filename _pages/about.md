@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Hi there"
+title: "Hi there 👋"
 author_profile: true
 redirect_from:
   - /about/
@@ -13,9 +13,9 @@ I work across the whole stack rather than one slice of it — RTL design, NPU an
 
 What I work on
 ======
-- **AI accelerator architecture**
-- **Hardware–software co-design**
-- **Hardware security**
+- *AI accelerator architecture*
+- *Hardware–software co-design*
+- *Hardware security*
 
 Selected projects
 ======
