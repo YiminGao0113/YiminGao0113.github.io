@@ -1,7 +1,7 @@
 ---
 title: "CryptoPUF"
 collection: projects
-order: 4
+order: 5
 permalink: /projects/cryptopuf
 tagline: "A strong PUF that machine learning can't model, built from a weak one"
 status: "IEEE RFID-TA 2024"

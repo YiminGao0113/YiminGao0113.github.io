@@ -1,7 +1,7 @@
 ---
 title: "Membrane"
 collection: projects
-order: 5
+order: 6
 permalink: /projects/membrane
 tagline: "Filtering database queries inside DRAM, before the data ever moves"
 status: "ACM TACO 2025 · US patent pending"

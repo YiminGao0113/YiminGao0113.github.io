@@ -1,7 +1,7 @@
 ---
 title: "LiteAIR5"
 collection: projects
-order: 3
+order: 4
 permalink: /projects/liteair5
 tagline: "A system-level framework for designing and modeling AI-extended RISC-V cores"
 status: "IEEE SOCC 2023"

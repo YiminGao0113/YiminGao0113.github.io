@@ -9,7 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
-[Download CV (PDF)](/files/cv.pdf)
+<!-- To offer a PDF, drop it at files/cv.pdf and restore this line:
+     [Download CV (PDF)](/files/cv.pdf) -->
 
 Education
 ======

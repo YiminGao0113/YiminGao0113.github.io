@@ -30,4 +30,5 @@ The result is an accelerator that can trade accuracy for throughput and energy
 continuously, and do it per layer, rather than forcing one global format on the
 entire model.
 
-*To appear at the IEEE/ACM International Symposium on Microarchitecture (MICRO), 2026.*
+*To appear at the IEEE/ACM International Symposium on Microarchitecture
+(MICRO) 2026. Work with L. Dai, J. Yin, X. Guo, and M. R. Stan.*

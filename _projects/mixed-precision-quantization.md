@@ -1,7 +1,7 @@
 ---
 title: "Edge-MPQ"
 collection: projects
-order: 2
+order: 3
 permalink: /projects/edge-mpq
 tagline: "Layer-wise mixed-precision quantization, co-designed with the hardware that runs it"
 status: "IEEE Transactions on Computers 2024"
