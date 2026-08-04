@@ -9,7 +9,34 @@
    muted text 5.8:1 -- all clear WCAG AA comfortably.
    ========================================================================== */
 
+/* Light theme: a warm off-white rather than #fff. Paper-ish and easier to sit
+   with, and it lets cards read as raised by being lighter than the page.
+   Links darkened from the stock #52adc8, which only reached 2.2:1 on white and
+   fails outright on a tinted background.
+
+   Contrast against #f7f4f0: body text 12:1, links 5.6:1, muted text 5.2:1. */
+:root {
+  --global-bg-color                   : #f7f4f0;
+  --global-footer-bg-color            : #efeae3;
+  --global-border-color               : #ddd5cb;
+  --global-dark-border-color          : #c6bdb1;
+  --global-code-background-color      : #f0ebe4;
+  --global-code-text-color            : #3b3733;
+  --global-fig-caption-color          : #6b665f;
+  --global-base-color                 : #256a7c;
+  --global-link-color                 : #256a7c;
+  --global-link-color-hover           : #1a4f5d;
+  --global-link-color-visited         : #5c6b8a;
+  --global-masthead-link-color        : #4a4640;
+  --global-masthead-link-color-hover  : #256a7c;
+  --global-text-color                 : #33302c;
+  --global-text-color-light           : #6b665f;
+  --global-thead-color                : #efeae3;
+  --card-bg                           : #fffdfa;
+}
+
 html[data-theme="dark"] {
+  --card-bg                           : #161b22;
   --global-bg-color                   : #0d1117;
   --global-footer-bg-color            : #010409;
   --global-border-color               : #30363d;
@@ -114,11 +141,10 @@ html[data-theme="dark"] {
   }
   border: 1px solid var(--global-border-color);
   border-radius: $border-radius;
-  background-color: var(--global-bg-color);
-  /* Neutral overlay: darkens the light theme and lightens the dark theme by
-     the same small amount, so cards read as raised in both. */
-  background-image: linear-gradient(rgba(128, 128, 128, 0.05),
-                                    rgba(128, 128, 128, 0.05));
+  /* Explicitly lighter than the page in light mode and lighter than the
+     near-black in dark mode, so cards read as raised in both rather than
+     relying on a neutral overlay that can only go one direction. */
+  background-color: var(--card-bg, var(--global-bg-color));
   text-decoration: none !important;
   color: var(--global-text-color) !important;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
