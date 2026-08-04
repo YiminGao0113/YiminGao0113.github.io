@@ -43,4 +43,4 @@ Patent
 
 Get in touch
 ======
-I'm always up for talking about accelerators, quantization, or why the profile doesn't match the model. Reach me at [yg9bq@virginia.edu](mailto:yg9bq@virginia.edu).
+I'm always up for talking about accelerators, quantization, or hardware security. Reach me at [yg9bq@virginia.edu](mailto:yg9bq@virginia.edu).
