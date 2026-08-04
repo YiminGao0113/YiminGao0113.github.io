@@ -14,7 +14,7 @@ I like building the whole stack rather than one slice of it — architectural ex
 What I'm working on now
 ======
 
-**[FlexPosit](/projects/flexposit)** — an LLM inference accelerator built around posit arithmetic with a tunable fraction width, so precision becomes a knob you can turn per layer instead of a property baked into the datapath. Appearing at MICRO 2026.
+**[FlexPosit](/projects/flexposit)** — an LLM inference accelerator that treats precision as a continuously tunable resource rather than a fixed property of the datapath. Posit-based algorithm–hardware co-design: distribution-aware mixed-precision quantization on one side, and a unified bit-serial systolic array that tunes precision from 4 to 8 bits without giving up regular dataflow on the other. Near-FP16 accuracy below 5 bits average, and up to 1.8× throughput and 2× lower energy at matched accuracy. Appearing at MICRO 2026.
 
 **[EdgeScope](/projects/edgescope)** — full-stack profiling and design space exploration for edge NPUs. Most DSE tools model the accelerator alone and leave the host CPU out of the design space. On real workloads the host is often the thing actually holding you back, so EdgeScope models compute, memory, dispatch, and host together, and it's calibrated against an FPGA platform rather than against assumptions.
 

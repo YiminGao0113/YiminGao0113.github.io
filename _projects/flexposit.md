@@ -3,32 +3,49 @@ title: "FlexPosit"
 collection: projects
 order: 1
 permalink: /projects/flexposit
-tagline: "Tunable fractional precision for LLM inference accelerators"
+tagline: "Precision as a continuously tunable hardware resource"
 status: "MICRO 2026"
-keywords: ["posit arithmetic", "LLM inference", "bit-serial", "accelerator design"]
-excerpt: "A precision-scalable posit accelerator that lets you dial in exactly as many fraction bits as a layer actually needs."
+keywords: ["posit arithmetic", "LLM inference", "mixed-precision quantization", "bit-serial systolic array"]
+excerpt: "Mixed-precision quantization gives you rich tradeoffs in software, then wrecks the regular dataflow accelerators depend on. FlexPosit gets both."
 ---
 
-Running a large language model is mostly an exercise in moving numbers around. The
-multiplies are cheap; the bandwidth and energy spent hauling weights out of memory
-are not. That makes the choice of number format one of the highest-leverage
-decisions in the whole accelerator.
+Running an LLM at the edge, under a real compute and energy budget, asks for two
+things at the same time. You want **precision tunability**, so you can land on the
+right accuracy-efficiency point for whatever budget you've been handed. And you
+want **high quantization accuracy** on the heavy-tailed, sensitivity-prone weight
+distributions that modern LLMs actually have.
 
-The trouble is that the usual options are coarse. FP16 is safe but wasteful. INT8
-is fast but needs careful calibration, and it spends its precision uniformly
-across a range that neural network weights don't actually use uniformly. Every
-layer gets the same format whether it wants it or not.
+Those two rarely show up together. Mixed-precision quantization exposes genuinely
+rich tradeoffs — in software. Push that fine-grained precision variation down into
+hardware and it collides head-on with the regular dataflow that makes an
+accelerator efficient in the first place. You can have the flexibility or you can
+have the systolic array.
 
-Posits are a better starting point, because their accuracy is *tapered* — they
-carry the most precision near ±1, which is where most weights and activations
-actually live. FlexPosit builds on that idea and makes the fraction width itself
-tunable, so precision becomes a knob rather than a fixed property of the datapath.
-The hardware is bit-serial, which means the cost of a given operation scales with
-the precision you asked for instead of the worst case you provisioned for.
+Our insight is to stop treating precision as a fixed property of the datapath and
+start treating it as a **tunable fractional hardware resource** — a knob that
+trades accuracy, throughput, and energy on demand. FlexPosit realizes that with
+algorithm-hardware co-design built on posit arithmetic.
 
-The result is an accelerator that can trade accuracy for throughput and energy
-continuously, and do it per layer, rather than forcing one global format on the
-entire model.
+Both halves
+======
+
+**Algorithm side:** a distribution-aware, hardware-aligned mixed-precision
+quantization scheme that jointly decides per-channel scaling and
+sensitivity-guided precision allocation. Jointly matters — these two decisions
+constrain each other, and picking them separately leaves accuracy behind.
+
+**Architecture side:** a unified bit-serial systolic array with lightweight
+per-column decoders and a global precision controller. It tunes precision
+continuously from 4 to 8 bits while keeping the systolic dataflow fully regular.
+That's the part that makes the software flexibility survive contact with hardware
+instead of being flattened out by it.
+
+What it gets you
+======
+
+FlexPosit reaches near-FP16 accuracy at **sub-5-bit average weight precision**. At
+matched accuracy, it delivers up to **1.8× higher throughput** and **2× lower
+energy** than state-of-the-art LLM inference accelerators.
 
 *To appear at the IEEE/ACM International Symposium on Microarchitecture
 (MICRO) 2026. Work with L. Dai, J. Yin, X. Guo, and M. R. Stan.*
