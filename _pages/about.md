@@ -9,7 +9,7 @@ redirect_from:
 
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), working with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
 
-I work across the whole stack rather than one slice of it — RTL design, NPU and SoC integration, compilers and runtimes on FPGA, and silicon-aware modeling. My current work centers on LLM inference accelerators and quantization–hardware co-design, alongside lightweight security primitives for resource-constrained devices.
+I work across the whole stack rather than one slice of it — RTL design, NPU and SoC integration, compilers and runtimes, FPGA prototyping, and cycle-accurate simulation in C++. My current work centers on LLM inference accelerators and quantization–hardware co-design, alongside lightweight security primitives for resource-constrained devices.
 
 What I work on
 ======
