@@ -14,7 +14,7 @@ author_profile: true
 <div class="project-grid">
   {% assign projects = site.projects | sort: "order" %}
   {% for project in projects %}
-  <a class="project-card reveal" href="{{ base_path }}{{ project.url }}">
+  <a class="project-card reveal" href="{{ base_path }}{{ project.url }}"{% if project.accent %} style="--card-accent: {{ project.accent }}"{% endif %}>
     {% if project.status %}<span class="project-card__status">{{ project.status }}</span>{% endif %}
     <h2 class="project-card__title">{{ project.title }}</h2>
     <p class="project-card__tagline">{{ project.tagline }}</p>

@@ -4,6 +4,7 @@ collection: projects
 order: 4
 permalink: /projects/liteair5
 tagline: "An AI-extended RISC-V core, and the end-to-end framework to design one"
+accent: "#a78bfa"
 status: "IEEE SOCC 2023"
 keywords: ["RISC-V", "ISA extensions", "SoC generation", "FPGA emulation", "edge AI"]
 excerpt: "Traditional edge AI hardware either isn't fast enough or costs too much power and area. A third option needs tooling that sees the whole system."

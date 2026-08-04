@@ -4,6 +4,7 @@ collection: projects
 order: 1
 permalink: /projects/flexposit
 tagline: "Precision as a continuously tunable hardware resource"
+accent: "#f59e0b"
 status: "MICRO 2026 · GF12 tapeout ongoing"
 keywords: ["posit arithmetic", "LLM inference", "mixed-precision quantization", "bit-serial systolic array"]
 excerpt: "Mixed-precision quantization gives you rich tradeoffs in software, then wrecks the regular dataflow accelerators depend on. FlexPosit gets both."

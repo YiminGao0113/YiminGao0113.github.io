@@ -4,6 +4,7 @@ collection: projects
 order: 3
 permalink: /projects/edge-mpq
 tagline: "Mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can do"
+accent: "#3b82f6"
 status: "IEEE Transactions on Computers 2024"
 keywords: ["mixed-precision quantization", "RISC-V", "ISA co-design", "INT2–INT8", "14nm"]
 excerpt: "Layer-wise mixed precision beats uniform quantization — but the search has to know what the hardware supports, and the hardware has to actually support it."

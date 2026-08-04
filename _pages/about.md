@@ -17,16 +17,13 @@ What I work on
 - **Hardware–software co-design**
 - **Hardware security**
 
-Current projects
+Selected projects
 ======
 - **[FlexPosit](/projects/flexposit)** — an LLM inference accelerator where precision is set at runtime, tunable from 4 to 8 bits per kernel, rather than fixed at design time. *MICRO 2026, taping out in GF12.*
 - **[EdgeScope](/projects/edgescope)** — design space exploration that puts the host CPU inside the design space, so you stop buying silicon for a bottleneck you don't have. *Built on FlexNPU, a full-stack FPGA NPU platform — compiler, runtime, RTL.*
 - **[Edge-MPQ](/projects/edge-mpq)** — mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can actually do.
-- **[LiteAIR5](/projects/liteair5)** — an AI-extended RISC-V core and the end-to-end framework for designing one.
-- **[CryptoPUF](/projects/cryptopuf)** — a weak PUF and a crypto core covering each other's weaknesses, for devices with no area to spare. *Taping out in GF12.*
-- **[Membrane](/projects/membrane)** — bit-serial comparison inside DRAM, so most rows never cross the memory bus.
 
-[More on all of it &rarr;](/projects/)
+[All six projects &rarr;](/projects/)
 
 Selected publications
 ======

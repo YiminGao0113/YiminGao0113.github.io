@@ -2,6 +2,24 @@
 
 <!-- start custom head snippets -->
 
+<!-- Apply a saved theme choice before first paint.
+     The <html> tag ships with data-theme="dark" (site.default_theme), so dark is
+     what a first-time visitor gets. Anyone who has used the toggle has their
+     choice in localStorage, and without this they would see a flash of dark
+     before main.min.js corrected it on DOM ready. -->
+<script>
+  (function () {
+    try {
+      var saved = window.localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+      } else if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) { /* private mode, storage blocked -- keep the default */ }
+  })();
+</script>
+
 <!-- Support for Academicons -->
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"></noscript>

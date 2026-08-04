@@ -4,6 +4,7 @@ collection: projects
 order: 2
 permalink: /projects/edgescope
 tagline: "Design space exploration that puts the host CPU inside the design space"
+accent: "#10b981"
 status: "Platform in silicon · tool in submission"
 keywords: ["NPU", "MLIR / IREE", "compiler and runtime", "design space exploration", "host bottleneck"]
 excerpt: "Existing DSE tools model the accelerator in isolation. Spend your area budget on that advice and you can buy a bigger array for a workload that was never compute-bound."
