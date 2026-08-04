@@ -20,7 +20,7 @@ What I work on
 Current projects
 ======
 - **[FlexPosit](/projects/flexposit)** — an LLM inference accelerator that makes precision a continuously tunable knob instead of a property baked into the datapath. *MICRO 2026, taping out in GF12.*
-- **[FlexNPU & EdgeScope](/projects/edgescope)** — a full-stack FPGA NPU platform, plus design space exploration that treats the host CPU as part of the design space instead of ignoring it.
+- **[EdgeScope](/projects/edgescope)** — design space exploration that puts the host CPU inside the design space, so you stop buying silicon for a bottleneck you don't have. *Built on FlexNPU, a full-stack FPGA NPU platform — compiler, runtime, RTL.*
 - **[Edge-MPQ](/projects/edge-mpq)** — mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can actually do.
 - **[LiteAIR5](/projects/liteair5)** — an AI-extended RISC-V core and the end-to-end framework for designing one.
 - **[CryptoPUF](/projects/cryptopuf)** — a weak PUF and a crypto core covering each other's weaknesses, for devices with no area to spare. *Taping out in GF12.*
@@ -43,4 +43,4 @@ Patent
 
 Get in touch
 ======
-I'm always up for talking about accelerators, number formats, or why the profile doesn't match the model. Reach me at [yg9bq@virginia.edu](mailto:yg9bq@virginia.edu).
+I'm always up for talking about accelerators, quantization, or why the profile doesn't match the model. Reach me at [yg9bq@virginia.edu](mailto:yg9bq@virginia.edu).

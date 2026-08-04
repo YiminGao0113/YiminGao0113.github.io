@@ -5,7 +5,7 @@ permalink: /personal/
 author_profile: true
 ---
 
-Two dogs run this household, and neither of them cares about number formats.
+Two dogs run this household, and neither of them cares about AI accelerators.
 
 <figure class="photo-hero reveal">
   <img src="/images/dogs/winter-and-oreo.jpg"
@@ -49,6 +49,3 @@ narrows considerably when food is involved.
     <figcaption>Recovering, and making sure everyone knows it.</figcaption>
   </figure>
 </div>
-
-If you meet me at a conference and the conversation stalls, this is a topic I can
-sustain indefinitely.

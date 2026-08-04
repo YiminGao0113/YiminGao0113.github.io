@@ -150,6 +150,51 @@
 }
 
 /* ==========================================================================
+   PROJECT FIGURES
+   Inline SVG rather than <img>, so the diagrams inherit the theme's colors
+   through currentColor and follow the dark-mode toggle rather than only the
+   OS preference.
+   ========================================================================== */
+
+.project-figure {
+  margin: 2.2em 0;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--global-text-color);
+    overflow: visible;
+  }
+
+  figcaption {
+    margin-top: 0.9em;
+    font-family: $caption-font-family;
+    font-size: $type-size-6;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: center;
+    color: var(--global-text-color);
+    opacity: 0.75;
+  }
+}
+
+/* Shared vocabulary for every diagram. */
+.pf-accent      { fill: var(--global-base-color); }
+.pf-accent-line { stroke: var(--global-base-color); fill: none; stroke-width: 1.5; }
+.pf-fill        { fill: currentColor; opacity: 0.14; }
+.pf-fill-strong { fill: currentColor; opacity: 0.30; }
+.pf-line        { stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.5; }
+.pf-line-soft   { stroke: currentColor; fill: none; stroke-width: 1; opacity: 0.22; }
+.pf-box         { stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.45; }
+.pf-text        { fill: currentColor; font-size: 12px; opacity: 0.85; }
+.pf-text-sm     { fill: currentColor; font-size: 10.5px; opacity: 0.6; }
+.pf-text-hd     { fill: currentColor; font-size: 12.5px; font-weight: 700; opacity: 0.9; }
+.pf-text-ac     { fill: var(--global-base-color); font-size: 12px; font-weight: 700; }
+
+/* ==========================================================================
    PHOTOS
    ========================================================================== */
 
