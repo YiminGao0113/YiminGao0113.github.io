@@ -1,0 +1,10 @@
+# Local-preview overrides. Layer this on top of _config.yml:
+#
+#   bundle exec jekyll serve --config _config.yml,_config_dev.yml
+#
+# Why this exists: _includes/base_path sets base_path to site.url + site.baseurl,
+# so with the production url in place every stylesheet, image, and nav link in a
+# local build points at https://YiminGao0113.github.io instead of localhost. The
+# preview then silently loads the *live* site's assets. Blanking url makes
+# base_path empty, so everything resolves root-relative and stays local.
+url: ""

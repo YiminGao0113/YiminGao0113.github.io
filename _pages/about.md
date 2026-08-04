@@ -9,22 +9,22 @@ redirect_from:
 
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), working with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
 
-I like building the whole stack rather than one slice of it — architectural exploration, RTL, FPGA system integration, and silicon-aware modeling. That end-to-end habit is deliberate. A design can look great in a spreadsheet and then lose badly on real hardware to something the model never accounted for, and you usually only find that out by building it and measuring.
-
-What I'm working on now
-======
-
-**[FlexPosit](/projects/flexposit)** — an LLM inference accelerator that treats precision as a continuously tunable resource rather than a fixed property of the datapath. Posit-based algorithm–hardware co-design: distribution-aware mixed-precision quantization on one side, and a unified bit-serial systolic array that tunes precision from 4 to 8 bits without giving up regular dataflow on the other. Near-FP16 accuracy below 5 bits average, and up to 1.8× throughput and 2× lower energy at matched accuracy. Appearing at MICRO 2026.
-
-**[EdgeScope](/projects/edgescope)** — host-aware design space exploration for edge NPUs. Existing DSE tools model the accelerator in isolation and leave the host CPU out of the design space entirely, which is a problem when the host is what's actually setting the wall. EdgeScope treats it as a first-class resource and allocates area across accelerator sizing and operator coverage together. Built and validated on FlexNPU, an FPGA NPU platform where every configuration runs one unchanged compiled binary, so each design change can be measured in isolation.
-
-Before those, I worked on mixed-precision quantization and the inference units to run it ([Edge-MPQ](/projects/edge-mpq)), a framework for exploring AI-extended RISC-V cores ([LiteAIR5](/projects/liteair5)), ML-resilient PUFs ([CryptoPUF](/projects/cryptopuf)), and processing-in-memory for database analytics ([Membrane](/projects/membrane)).
+I work across the whole stack rather than one slice of it — RTL design, NPU and SoC integration, compilers and runtimes on FPGA, and silicon-aware modeling. That's deliberate. A design can look great in a spreadsheet and then lose badly on real hardware to something the model never accounted for, and you usually only find that out by building it and measuring.
 
 What I work on
 ======
 - **AI accelerator architecture**
 - **Hardware–software co-design**, including hardware-aware quantization
 - **Hardware security**
+
+Current projects
+======
+- **[FlexPosit](/projects/flexposit)** — an LLM inference accelerator that makes precision a continuously tunable knob instead of a property baked into the datapath. *MICRO 2026, taping out in GF12.*
+- **[FlexNPU & EdgeScope](/projects/edgescope)** — a full-stack FPGA NPU platform, plus design space exploration that treats the host CPU as part of the design space instead of ignoring it.
+- **[Edge-MPQ](/projects/edge-mpq)** — mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can actually do.
+- **[LiteAIR5](/projects/liteair5)** — an AI-extended RISC-V core and the end-to-end framework for designing one.
+- **[CryptoPUF](/projects/cryptopuf)** — a weak PUF and a crypto core covering each other's weaknesses, for devices with no area to spare. *Taping out in GF12.*
+- **[Membrane](/projects/membrane)** — bit-serial comparison inside DRAM, so most rows never cross the memory bus.
 
 [More on all of it &rarr;](/projects/)
 
