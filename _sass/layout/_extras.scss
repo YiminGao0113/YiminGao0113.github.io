@@ -244,11 +244,18 @@ html[data-theme="dark"] {
 }
 
 /* A thin spectrum under the masthead -- the six project accents in order.
-   border-image keeps it to the existing border box, so nothing reflows. */
+   Held at 40% alpha so it blends toward the background and reads as a tint
+   rather than a stripe. border-image keeps it to the existing border box, so
+   nothing reflows. */
 .masthead {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg,
-      #f59e0b, #10b981, #3b82f6, #a78bfa, #ef4444, #06b6d4) 1;
+      rgba(245, 158, 11, 0.4),
+      rgba(16, 185, 129, 0.4),
+      rgba(59, 130, 246, 0.4),
+      rgba(167, 139, 250, 0.4),
+      rgba(239, 68, 68, 0.4),
+      rgba(6, 182, 212, 0.4)) 1;
 }
 
 /* ==========================================================================
