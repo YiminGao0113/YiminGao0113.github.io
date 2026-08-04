@@ -19,7 +19,7 @@ What I work on
 
 Current projects
 ======
-- **[FlexPosit](/projects/flexposit)** — an LLM inference accelerator that makes precision a continuously tunable knob instead of a property baked into the datapath. *MICRO 2026, taping out in GF12.*
+- **[FlexPosit](/projects/flexposit)** — an LLM inference accelerator where precision is set at runtime, tunable from 4 to 8 bits per kernel, rather than fixed at design time. *MICRO 2026, taping out in GF12.*
 - **[EdgeScope](/projects/edgescope)** — design space exploration that puts the host CPU inside the design space, so you stop buying silicon for a bottleneck you don't have. *Built on FlexNPU, a full-stack FPGA NPU platform — compiler, runtime, RTL.*
 - **[Edge-MPQ](/projects/edge-mpq)** — mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can actually do.
 - **[LiteAIR5](/projects/liteair5)** — an AI-extended RISC-V core and the end-to-end framework for designing one.

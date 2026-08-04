@@ -21,10 +21,10 @@ hardware and it collides head-on with the regular dataflow that makes an
 accelerator efficient in the first place. You can have the flexibility or you can
 have the systolic array.
 
-Our insight is to stop treating precision as a fixed property of the datapath and
-start treating it as a **tunable fractional hardware resource** — a knob that
-trades accuracy, throughput, and energy on demand. FlexPosit realizes that with
-algorithm-hardware co-design built on posit arithmetic.
+Our insight is to stop treating precision as a width fixed at design time and start
+treating it as a **tunable fractional hardware resource** — a knob, set at runtime,
+that trades accuracy, throughput, and energy on demand. FlexPosit realizes that
+with algorithm-hardware co-design built on posit arithmetic.
 
 Both halves
 ======
