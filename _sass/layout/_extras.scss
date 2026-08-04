@@ -30,14 +30,18 @@ html[data-theme="dark"] {
 
 /* ==========================================================================
    TECH TYPE
-   Monospace on the structural surfaces -- site title, nav, headings, card
-   chrome, figure labels -- while body prose stays sans-serif. Running long
-   paragraphs in monospace costs real readability, so it stops at the chrome.
-   System fonts only; no network request.
+   $techmono is defined in _themes.scss and aliased over $serif/$sans-serif, so
+   every element inherits it. What remains here is the optical tightening that
+   headings want at larger sizes, plus a catch for the one hard-coded font in
+   the theme.
    ========================================================================== */
 
-$techmono: "JetBrains Mono", "Fira Code", "SFMono-Regular", "SF Mono",
-           ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+/* The only hard-coded family left in the theme. Nothing renders .cv-container
+   since the JSON CV page was removed, but this keeps the sweep complete. */
+.cv-container,
+.cv-container * {
+  font-family: $techmono;
+}
 
 .masthead__menu-item,
 .greedy-nav a,
