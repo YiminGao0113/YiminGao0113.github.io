@@ -71,6 +71,21 @@ html[data-theme="dark"] {
 }
 
 /* ==========================================================================
+   SIDEBAR SPACING
+   .author__name carries only a 10px bottom margin, which was fine when a bio
+   paragraph sat between it and the location. With the bio removed the name
+   collided with the block below it, so the gap moves onto the container.
+   ========================================================================== */
+
+.author__content {
+  margin-bottom: 1.5em;
+}
+
+.author__urls-wrapper {
+  padding-top: 0.25em;
+}
+
+/* ==========================================================================
    THEME TOGGLE, PINNED RIGHT
    The toggle is already the last item in the nav (the greedy-nav script keeps
    .persist.tail at the end), but .visible-links is `display: table`, so the row
