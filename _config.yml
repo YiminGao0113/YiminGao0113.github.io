@@ -27,7 +27,9 @@ author:
   avatar           : "profile.jpg"
   name             : "Yimin Gao"
   pronouns         : # example: "she/her"
-  bio              : "PhD Student, Electrical and Computer Engineering"
+  bio              : # Left blank on purpose. The sidebar already shows the
+                     # employer and location, and the homepage opens with the
+                     # department -- anything here restated one of them.
   location         : "Charlottesville, VA"
   employer         : "University of Virginia"
   uri              : # URL
