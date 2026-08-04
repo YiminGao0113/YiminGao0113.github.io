@@ -197,6 +197,14 @@ exclude:
   - README
   - tmp
   - vendor
+  # Template tooling, not site content -- without these they get copied
+  # verbatim into _site and served at the site root.
+  - docker-compose.yaml
+  - docker-compose.yml
+  - markdown_generator
+  - scripts
+  - talkmap.ipynb
+  - talkmap.py
 keep_files:
   - .git
   - .svn
