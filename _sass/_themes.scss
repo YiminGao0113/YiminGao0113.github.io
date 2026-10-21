@@ -13,15 +13,18 @@ $doc-font-size              : 16;
 $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
-/* System typefaces.
+/* Typefaces: the IBM Plex family, loaded from Google Fonts in
+   _includes/head/custom.html. Sans and Mono share one design, so the chrome
+   and the prose read as a set rather than two unrelated faces.
    $techmono is applied to the site's chrome only -- masthead, nav, headings,
    card titles, figure labels -- by the rules in layout/_extras.scss. Body prose
-   deliberately stays sans-serif. System fonts only, no web request. */
-$techmono                   : "JetBrains Mono", "Fira Code", "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+   deliberately stays sans-serif. The system fallbacks cover a blocked request. */
+$techmono                   : "IBM Plex Mono", "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
 
-$serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+$display-serif              : "Source Serif 4", "IBM Plex Serif", Georgia, serif; // headings, names, card titles
+$serif                      : "IBM Plex Serif", Georgia, Times, serif;
+$sans-serif                 : "IBM Plex Sans", -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+$monospace                  : $techmono;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;

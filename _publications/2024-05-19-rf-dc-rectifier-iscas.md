@@ -8,4 +8,5 @@ date: 2024-05-19
 venue: 'IEEE International Symposium on Circuits and Systems (ISCAS)'
 paperurl: 'https://ieeexplore.ieee.org/document/10558291'
 citation: 'J. Yin, E. Pantoja, <b>Y. Gao</b>, and M. R. Stan. (2024). &quot;A Feedback Self-Adaptive Body Biasing-Based RF-DC Rectifier for Highly-Sensitive RF Energy Harvesting.&quot; <i>IEEE International Symposium on Circuits and Systems (ISCAS)</i>.'
+venue_short: 'ISCAS'
 ---

@@ -3,11 +3,10 @@ title: "LiteAIR5"
 collection: projects
 order: 4
 permalink: /projects/liteair5
-tagline: "An AI-extended RISC-V core, and the end-to-end framework to design one"
-accent: "#a78bfa"
+tagline: "An AI-extended RISC-V core and an end-to-end framework for designing it"
 status: "IEEE SOCC 2023"
 keywords: ["RISC-V", "ISA extensions", "SoC generation", "FPGA emulation", "edge AI"]
-excerpt: "Traditional edge AI hardware either isn't fast enough or costs too much power and area. A third option needs tooling that sees the whole system."
+excerpt: "A system-level framework for designing and modeling AI-extended RISC-V cores, evaluating performance, power, and area together."
 ---
 
 Machine learning at the edge has outgrown what general-purpose embedded cores can

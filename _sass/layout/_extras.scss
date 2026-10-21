@@ -9,30 +9,30 @@
    muted text 5.8:1 -- all clear WCAG AA comfortably.
    ========================================================================== */
 
-/* Light theme: a warm off-white rather than #fff. Paper-ish and easier to sit
-   with, and it lets cards read as raised by being lighter than the page.
-   Links darkened from the stock #52adc8, which only reached 2.2:1 on white and
-   fails outright on a tinted background.
+/* Light theme: plain white with neutral greys and a navy link colour -- the
+   look of a paper or a lab page rather than a warm notebook. Cards sit on the
+   same white and are separated by their border instead of a tint.
+   Links darkened from the stock #52adc8, which only reached 2.2:1 on white.
 
-   Contrast against #f4efe6: body text 11.5:1, links 5.3:1, muted text 5.5:1. */
+   Contrast against #fff: body text 14.7:1, links 8.4:1, muted text 7.0:1. */
 :root {
-  --global-bg-color                   : #f4efe6;
-  --global-footer-bg-color            : #ebe4d6;
-  --global-border-color               : #dcd3c2;
-  --global-dark-border-color          : #c4b9a4;
-  --global-code-background-color      : #efe8da;
-  --global-code-text-color            : #3b3733;
-  --global-fig-caption-color          : #645f56;
-  --global-base-color                 : #256a7c;
-  --global-link-color                 : #256a7c;
-  --global-link-color-hover           : #1a4f5d;
-  --global-link-color-visited         : #5c6b8a;
-  --global-masthead-link-color        : #46413a;
-  --global-masthead-link-color-hover  : #256a7c;
-  --global-text-color                 : #33302c;
-  --global-text-color-light           : #645f56;
-  --global-thead-color                : #ebe4d6;
-  --card-bg                           : #fdfaf4;
+  --global-bg-color                   : #ffffff;
+  --global-footer-bg-color            : #f6f7f9;
+  --global-border-color               : #e3e6ea;
+  --global-dark-border-color          : #c5cad1;
+  --global-code-background-color      : #f4f5f7;
+  --global-code-text-color            : #2b2f36;
+  --global-fig-caption-color          : #555b65;
+  --global-base-color                 : #1f4e8c;
+  --global-link-color                 : #1f4e8c;
+  --global-link-color-hover           : #143563;
+  --global-link-color-visited         : #4a4e8a;
+  --global-masthead-link-color        : #2b2f36;
+  --global-masthead-link-color-hover  : #1f4e8c;
+  --global-text-color                 : #1f2328;
+  --global-text-color-light           : #555b65;
+  --global-thead-color                : #f6f7f9;
+  --card-bg                           : #ffffff;
 }
 
 html[data-theme="dark"] {
@@ -83,10 +83,10 @@ html[data-theme="dark"] {
 
 /* The theme sets `.sidebar .author__name` at two classes, which outranks the
    single-class rule in the TECH TYPE block above -- so the name was still
-   sans-serif while the rest of the chrome was monospace. Matched here, and
+   sans-serif while the other headings were not. Matched here, and
    bumped a step from $type-size-5. */
 .sidebar .author__name {
-  font-family: $techmono;
+  font-family: $display-serif;
   font-size: $type-size-4;
 }
 
@@ -126,29 +126,33 @@ html[data-theme="dark"] {
 
 /* ==========================================================================
    TECH TYPE
-   Monospace on the structural surfaces only -- site title, nav, headings, card
-   chrome, figure labels. Body prose stays sans-serif: the project pages run to
-   several hundred words each, and monospace costs real readability at that
-   length. $techmono is defined in _themes.scss.
+   Monospace on the small structural surfaces only -- card chrome, figure
+   labels. The nav is set in the sans, and headings and names use the serif
+   display face below.
+   Body prose stays sans-serif: the project pages run to several hundred words
+   each, and monospace costs real readability at that length. $techmono and
+   $display-serif are defined in _themes.scss.
    ========================================================================== */
 
 .masthead__menu-item,
-.greedy-nav a,
+.greedy-nav a {
+  font-family: $sans-serif;
+  font-weight: 500;
+}
+
 .page__title,
 .archive__item-title,
-.projects-intro,
 .page__content h1,
 .page__content h2,
 .page__content h3,
 .page__content h4,
 .author__name {
-  font-family: $techmono;
-  letter-spacing: -0.01em;
+  font-family: $display-serif;
 }
 
 .page__content h1,
 .page__content h2 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* ==========================================================================
@@ -158,14 +162,6 @@ html[data-theme="dark"] {
    light/dark toggle automatically.
    ========================================================================== */
 
-.projects-intro {
-  margin-bottom: 2em;
-  font-size: $type-size-4;
-  line-height: 1.5;
-  color: var(--global-text-color);
-  opacity: 0.85;
-}
-
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,70 +169,45 @@ html[data-theme="dark"] {
   margin-bottom: 2em;
 }
 
-/* Each project carries its own accent hue, set from front matter as an inline
-   --card-accent. It is used only for chrome -- the top bar, chip outlines, the
-   status pill's edge, the hover border -- never behind text, so no colour has to
-   clear a contrast threshold it can't meet in both themes. */
+/* Cards are deliberately quiet: a hairline border on white, one accent colour
+   (the site's navy) for focus and hover, and no motion beyond a border change. */
 .project-card {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 1.4em 1.5em;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -1px;
-    right: -1px;
-    height: 3px;
-    border-radius: $border-radius $border-radius 0 0;
-    background: var(--card-accent, var(--global-base-color));
-  }
   border: 1px solid var(--global-border-color);
   border-radius: $border-radius;
-  /* Explicitly lighter than the page in light mode and lighter than the
-     near-black in dark mode, so cards read as raised in both rather than
-     relying on a neutral overlay that can only go one direction. */
   background-color: var(--card-bg, var(--global-bg-color));
   text-decoration: none !important;
   color: var(--global-text-color) !important;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
-              border-color 0.2s ease-out;
+  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
 
   &:hover,
   &:focus-visible {
-    transform: translateY(-4px);
-    border-color: var(--card-accent, var(--global-link-color));
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    border-color: var(--global-base-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--card-accent, var(--global-link-color));
+    outline: 2px solid var(--global-base-color);
     outline-offset: 2px;
   }
 }
 
 .project-card__status {
   font-family: $techmono;
-  align-self: flex-start;
-  margin-bottom: 0.7em;
-  padding: 0.22em 0.7em 0.22em 0.6em;
-  border-left: 3px solid var(--card-accent, var(--global-base-color));
-  border-radius: 2px 999px 999px 2px;
-  /* Neutral tint rather than the link color: white-on-#52adc8 only reaches
-     about 2.2:1, which fails WCAG AA for text this small. */
-  background-color: rgba(128, 128, 128, 0.18);
-  color: var(--global-text-color);
+  margin-bottom: 0.6em;
+  color: var(--global-text-color-light);
   font-size: $type-size-7;
-  font-weight: bold;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .project-card__title {
-  font-family: $techmono;
-  letter-spacing: -0.02em;
+  font-family: $display-serif;
+  letter-spacing: -0.01em;
   margin: 0 0 0.2em;
   font-size: $type-size-3;
   line-height: 1.2;
@@ -267,12 +238,12 @@ html[data-theme="dark"] {
 
   li {
     margin: 0;
-    padding: 0.15em 0.6em;
-    border: 1px solid var(--card-accent, var(--global-border-color));
-    border-radius: 999px;
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    background-color: var(--global-code-background-color);
+    color: var(--global-text-color-light);
     font-family: $techmono;
     font-size: $type-size-7;
-    opacity: 0.75;
   }
 }
 
@@ -323,19 +294,9 @@ html[data-theme="dark"] {
   }
 }
 
-/* A thin spectrum under the masthead -- the six project accents in order.
-   Held at 40% alpha so it blends toward the background and reads as a tint
-   rather than a stripe. border-image keeps it to the existing border box, so
-   nothing reflows. */
+/* A plain hairline under the masthead. */
 .masthead {
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg,
-      rgba(245, 158, 11, 0.4),
-      rgba(16, 185, 129, 0.4),
-      rgba(59, 130, 246, 0.4),
-      rgba(167, 139, 250, 0.4),
-      rgba(239, 68, 68, 0.4),
-      rgba(6, 182, 212, 0.4)) 1;
+  border-bottom: 1px solid var(--global-border-color);
 }
 
 /* ==========================================================================
@@ -358,6 +319,14 @@ html[data-theme="dark"] {
     overflow: visible;
   }
 
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: $border-radius;
+  }
+
   figcaption {
     margin-top: 0.9em;
     font-family: $caption-font-family;
@@ -368,6 +337,14 @@ html[data-theme="dark"] {
     color: var(--global-text-color);
     opacity: 0.75;
   }
+}
+
+/* Figures lifted from a paper are drawn for white paper. Keep them on white,
+   with a little padding, so they stay legible in dark mode. */
+.project-figure--paper img {
+  padding: 0.75em;
+  background: #fff;
+  border: 1px solid var(--global-border-color);
 }
 
 /* Shared vocabulary for every diagram. */
@@ -465,4 +442,193 @@ html[data-theme="dark"] {
   .project-card:focus-visible {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   READING WIDTH
+   Prose pages cap their column so lines stay around 80-90 characters. The
+   archive pages (research grid, publications) keep the full width.
+   ========================================================================== */
+
+.page .page__inner-wrap {
+  max-width: 50em;
+}
+
+.more-link {
+  font-size: $type-size-6;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+/* ==========================================================================
+   HOMEPAGE
+   ========================================================================== */
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 0.4em 0 2.2em;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0.3em 0.8em;
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+    font-size: $type-size-6;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* Selected projects: one row each, title and status on the first line,
+   tagline under it. The whole row is the link. */
+.feature-list {
+  margin: 0 0 1em;
+  border-top: 1px solid var(--global-border-color);
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.15em 1em;
+  padding: 0.9em 0.2em;
+  border-bottom: 1px solid var(--global-border-color);
+  color: var(--global-text-color) !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease-out;
+
+  &:hover { background-color: var(--global-code-background-color); }
+}
+
+.feature__title {
+  font-family: $display-serif;
+  font-size: $type-size-4;
+  font-weight: 700;
+  color: var(--global-base-color);
+}
+
+.feature__status {
+  align-self: center;
+  font-family: $techmono;
+  font-size: $type-size-7;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  text-align: right;
+}
+
+.feature__tagline {
+  grid-column: 1 / -1;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 600px) {
+  .feature { grid-template-columns: 1fr; }
+  .feature__status { text-align: left; }
+}
+
+/* ==========================================================================
+   PUBLICATIONS
+   A venue badge in a fixed left column, then title, authors, and venue.
+   Used on /publications/ and the homepage.
+   ========================================================================== */
+
+.pub-intro {
+  color: var(--global-text-color-light);
+}
+
+.archive .pub-section {
+  margin: 1.6em 0 0.4em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--global-border-color);
+  font-family: $display-serif;
+  font-size: $type-size-4;
+}
+
+.pub-list {
+  max-width: 50em;
+  margin: 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+
+.pub {
+  display: grid;
+  grid-template-columns: 6.5em 1fr;
+  gap: 1.1em;
+  margin: 0;
+  padding: 1em 0;
+  border-bottom: 1px solid var(--global-border-color);
+
+  &:last-child { border-bottom: 0; }
+}
+
+.pub__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: start;
+  padding: 0.45em 0.3em;
+  border-radius: $border-radius;
+  background-color: var(--global-code-background-color);
+  font-family: $techmono;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.pub__venue {
+  font-size: $type-size-7;
+  font-weight: 700;
+  color: var(--global-base-color);
+}
+
+.pub__year {
+  font-size: $type-size-7;
+  color: var(--global-text-color-light);
+}
+
+.pub__title {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pub__authors,
+.pub__meta {
+  margin-top: 0.2em;
+  font-size: $type-size-6;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+
+  b { color: var(--global-text-color); }
+}
+
+.pub__note {
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.pub__links {
+  margin-left: 0.4em;
+
+  a {
+    margin-right: 0.5em;
+    padding: 0.05em 0.5em;
+    border: 1px solid var(--global-border-color);
+    border-radius: 3px;
+    font-size: $type-size-7;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover { border-color: var(--global-base-color); }
+  }
+}
+
+@media (max-width: 600px) {
+  .pub { grid-template-columns: 1fr; gap: 0.5em; }
+  .pub__badge { flex-direction: row; gap: 0.4em; align-self: start; }
 }

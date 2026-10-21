@@ -3,11 +3,11 @@ title: "Edge-MPQ"
 collection: projects
 order: 3
 permalink: /projects/edge-mpq
-tagline: "Mixed-precision inference units built into a RISC-V pipeline, and a search that knows what the hardware can do"
-accent: "#3b82f6"
+tagline: "Mixed-precision inference units in a RISC-V pipeline, with hardware-aware precision search"
 status: "IEEE Transactions on Computers 2024"
 keywords: ["mixed-precision quantization", "RISC-V", "ISA co-design", "INT2–INT8", "14nm"]
-excerpt: "Layer-wise mixed precision beats uniform quantization — but the search has to know what the hardware supports, and the hardware has to actually support it."
+excerpt: "Layer-wise mixed-precision quantization co-designed with RISC-V inference units, so that the precision search reflects what the hardware supports."
+featured: true
 ---
 
 Layer-wise mixed-precision quantization strikes a better accuracy-efficiency

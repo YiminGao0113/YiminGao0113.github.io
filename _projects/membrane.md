@@ -3,11 +3,10 @@ title: "Membrane"
 collection: projects
 order: 6
 permalink: /projects/membrane
-tagline: "Bit-serial comparison inside DRAM, so most rows never leave memory"
-accent: "#06b6d4"
+tagline: "Bit-serial filtering inside DRAM for analytical queries"
 status: "ACM TACO 2025 · US patent pending"
 keywords: ["processing-in-memory", "DRAM", "bit-serial", "database analytics"]
-excerpt: "Analytical queries read enormous amounts of data and discard most of it. Better to discard it before it crosses the bus."
+excerpt: "Analytical queries read large volumes of data and discard most of it. Membrane performs the filtering inside DRAM, before data crosses the memory bus."
 ---
 
 Analytical database queries have a wasteful shape. A scan pulls gigabytes out of

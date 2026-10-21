@@ -1,0 +1,28 @@
+{% comment %}
+  One publication as a compact entry: a venue badge, then title, authors, and
+  venue line with links. Authors come from the citation, which always starts
+  "AUTHORS. (YEAR)." -- so everything before the first ". (" is the author list.
+{% endcomment %}
+{% assign pub = include.pub %}
+{% assign pub_authors = pub.citation | split: ". (" | first %}
+{% assign pub_authors_tail = pub_authors | slice: -5, 5 %}
+{% if pub_authors_tail == "et al" %}{% assign pub_authors = pub_authors | append: "." %}{% endif %}
+<li class="pub">
+  <div class="pub__badge">
+    <span class="pub__venue">{{ pub.venue_short | default: pub.venue }}</span>
+    <span class="pub__year">{{ pub.date | date: "%Y" }}</span>
+  </div>
+  <div class="pub__body">
+    <div class="pub__title">{{ pub.title }}</div>
+    <div class="pub__authors">{{ pub_authors }}</div>
+    <div class="pub__meta">
+      <i>{{ pub.venue }}</i>{% if pub.note %} &middot; <span class="pub__note">{{ pub.note }}</span>{% endif %}
+      {% if pub.paperurl or pub.project %}
+      <span class="pub__links">
+        {% if pub.paperurl %}<a href="{{ pub.paperurl }}">{% if pub.category == 'patents' %}Patent{% else %}Paper{% endif %}</a>{% endif %}
+        {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+</li>

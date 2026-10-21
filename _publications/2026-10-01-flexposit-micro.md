@@ -7,4 +7,8 @@ excerpt: 'To appear. Posit-based algorithm-hardware co-design that treats precis
 date: 2026-10-01
 venue: 'IEEE/ACM International Symposium on Microarchitecture (MICRO)'
 citation: '<b>Y. Gao</b>, L. Dai, J. Yin, X. Guo, and M. R. Stan. (2026). &quot;FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators.&quot; <i>IEEE/ACM International Symposium on Microarchitecture (MICRO)</i>. To appear.'
+venue_short: 'MICRO'
+project: '/projects/flexposit'
+note: 'To appear'
+selected: true
 ---

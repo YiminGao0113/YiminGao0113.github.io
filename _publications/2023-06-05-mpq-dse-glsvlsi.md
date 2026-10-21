@@ -7,4 +7,6 @@ excerpt: 'Design space exploration of layer-wise mixed-precision quantization pa
 date: 2023-06-05
 venue: 'Great Lakes Symposium on VLSI (GLSVLSI)'
 citation: 'X. Zhao, <b>Y. Gao</b>, V. Verma, R. Xu, M. R. Stan, and X. Guo. (2023). &quot;Design Space Exploration of Layer-wise Mixed-Precision Quantization with Tightly Integrated Edge Inference Units.&quot; <i>Great Lakes Symposium on VLSI (GLSVLSI)</i>.'
+venue_short: 'GLSVLSI'
+project: '/projects/edge-mpq'
 ---

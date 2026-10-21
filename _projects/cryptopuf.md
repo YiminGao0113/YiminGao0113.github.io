@@ -3,11 +3,10 @@ title: "CryptoPUF"
 collection: projects
 order: 5
 permalink: /projects/cryptopuf
-tagline: "A weak PUF and a crypto core, each covering the other's weakness"
-accent: "#ef4444"
+tagline: "A lightweight, ML-resilient strong PUF built from a weak PUF and a crypto core"
 status: "IEEE RFID-TA 2024 · GF12 tapeout ongoing"
 keywords: ["hardware security", "PUF", "ML-resilient", "IoT", "RFID"]
-excerpt: "Strong PUFs fall to machine learning. Crypto cores resist ML but have no intrinsic key. Put them together and each one's weakness is the other's strength."
+excerpt: "Strong PUFs are vulnerable to machine-learning modeling attacks, while crypto cores resist them but lack an intrinsic key. Combining the two addresses both weaknesses."
 ---
 
 IoT security has an awkward economics problem: the devices that most need

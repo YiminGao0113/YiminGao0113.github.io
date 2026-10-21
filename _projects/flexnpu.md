@@ -1,13 +1,15 @@
 ---
-title: "EdgeScope"
+title: "FlexNPU"
 collection: projects
 order: 2
-permalink: /projects/edgescope
-tagline: "Design space exploration that puts the host CPU inside the design space"
-accent: "#10b981"
+permalink: /projects/flexnpu
+redirect_from:
+  - /projects/edgescope
+tagline: "A full-stack edge NPU platform with host-aware design space exploration"
 status: "Platform in silicon · tool in submission"
 keywords: ["NPU", "MLIR / IREE", "compiler and runtime", "design space exploration", "host bottleneck"]
-excerpt: "Existing DSE tools model the accelerator in isolation. Spend your area budget on that advice and you can buy a bigger array for a workload that was never compute-bound."
+excerpt: "Existing design space exploration tools model the accelerator in isolation and can allocate area to workloads that are not compute-bound. FlexNPU treats the host CPU as a first-class resource."
+featured: true
 ---
 
 Design space exploration tools — Timeloop, MAESTRO, roofline analysis — model the
@@ -22,7 +24,7 @@ represent it. The practical consequence is that they'll happily recommend spendi
 your whole area budget on a bigger array for a workload that was never
 compute-bound.
 
-EdgeScope treats the host as a first-class resource alongside compute, memory, and
+FlexNPU's design space exploration treats the host as a first-class resource alongside compute, memory, and
 dispatch, and allocates a fixed area budget across two coupled axes: **sizing**,
 making the operators you already offload run faster, and **coverage**, moving whole
 operator classes onto the accelerator to relieve the host.
@@ -86,11 +88,11 @@ watches the bottleneck *shift* finds "grow, then cover" — and the allocator fi
 it on its own rather than being told. It also declines to spend when nothing helps,
 from the same code path, with no special case.
 
-Built on FlexNPU
+The platform
 ======
 
-Any of this is only trustworthy if the measurements are. EdgeScope is built on
-FlexNPU, an end-to-end AI accelerator platform I developed on a Xilinx Kria KV260
+Any of this is only trustworthy if the measurements are. Underneath is FlexNPU
+itself, an end-to-end AI accelerator platform I developed on a Xilinx Kria KV260
 (Zynq SoC) — custom compiler backend, custom C/C++ runtime, and a double-buffered
 RTL shell with AXI DMA.
 
