@@ -632,3 +632,32 @@ html[data-theme="dark"] {
   .pub { grid-template-columns: 1fr; gap: 0.5em; }
   .pub__badge { flex-direction: row; gap: 0.4em; align-self: start; }
 }
+
+/* Service & honors: label column on the left, details on the right. */
+.service-list {
+  display: grid;
+  grid-template-columns: 10em 1fr;
+  gap: 0.6em 1.2em;
+  align-items: baseline;
+  margin: 0.4em 0 1.5em;
+
+  dt {
+    font-family: $techmono;
+    font-size: $type-size-7;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+  }
+
+  dd {
+    margin: 0;
+    font-size: $type-size-6;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-list { grid-template-columns: 1fr; gap: 0.15em; }
+  .service-list dd { margin-bottom: 0.7em; }
+}

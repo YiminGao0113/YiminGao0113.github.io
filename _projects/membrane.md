@@ -4,7 +4,7 @@ collection: projects
 order: 6
 permalink: /projects/membrane
 tagline: "Bit-serial filtering inside DRAM for analytical queries"
-status: "ACM TACO 2025 · US patent pending"
+status: "ACM TACO 2026 · US patent pending"
 keywords: ["processing-in-memory", "DRAM", "bit-serial", "database analytics"]
 excerpt: "Analytical queries read large volumes of data and discard most of it. Membrane performs the filtering inside DRAM, before data crosses the memory bus."
 ---
@@ -82,7 +82,7 @@ The broader project pairs this in-memory filtering with schema denormalization,
 since normalized schemas scatter the columns a filter needs across tables — good
 database design, bad PIM workload.
 
-*Published in ACM Transactions on Architecture and Code Optimization (TACO), 2025,
+*Published in ACM Transactions on Architecture and Code Optimization (TACO), 2026,
 with A. Shekar, K. Gaffney, M. Prammer, K. Kiyawat, L. Wu, H. Caminal, Z. Fan, and
 colleagues. Related U.S. patent application 19/233,680, with K. Skadron, L. Wu,
 and A. Shekar.*

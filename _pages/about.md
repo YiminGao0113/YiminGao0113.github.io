@@ -41,3 +41,16 @@ Selected publications
 </ol>
 
 [Full publication list &rarr;](/publications/){: .more-link}
+
+Service &amp; honors
+======
+<dl class="service-list">
+  <dt>Program committee</dt>
+  <dd>Student Program Committee, IEEE/ACM International Symposium on Microarchitecture (MICRO), 2026</dd>
+  <dt>Session chair</dt>
+  <dd>IEEE International Conference on RFID Technology and Applications (RFID-TA), 2024</dd>
+  <dt>Journal reviewer</dt>
+  <dd><i>IEEE Transactions on Computers</i>; <i>Journal of Systems Architecture</i>; <i>Integration, the VLSI Journal</i></dd>
+  <dt>Honors</dt>
+  <dd>DAC Young Fellow, Design Automation Conference, 2023</dd>
+</dl>

@@ -1,0 +1,35 @@
+# Talks, newest first. Rendered on /publications/ in the same style as papers.
+- title: "FlexNPU: A Compiler-Integrated FPGA Platform for Plug-and-Play AI Accelerator Research"
+  venue: "Workshop on Open-Source Computer Architecture Research (OSCAR), co-located with ISCA"
+  venue_short: "OSCAR"
+  year: 2026
+  project: /projects/flexnpu
+- title: "FlexPosit: Precision-Scalable AI Accelerator for LLM Inference"
+  venue: "IBM AI Hardware Symposium"
+  venue_short: "IBM"
+  year: 2025
+  project: /projects/flexposit
+- title: "CryptoPUF: A Lightweight and ML-Resilient Strong PUF"
+  venue: "Virginia CCI Symposium"
+  venue_short: "CCI"
+  year: 2025
+  project: /projects/cryptopuf
+- title: "CryptoPUF: A Lightweight and ML-Resilient Strong PUF"
+  venue: "IEEE International Conference on RFID Technology and Applications (RFID-TA)"
+  venue_short: "RFID-TA"
+  year: 2024
+  project: /projects/cryptopuf
+- title: "LiteAIR5: AI-Extended RISC-V Core Design Framework"
+  venue: "IEEE International System-on-Chip Conference (SOCC)"
+  venue_short: "SOCC"
+  year: 2023
+  project: /projects/liteair5
+- title: "Design Space Exploration of Layer-wise Mixed-Precision Quantization"
+  venue: "Great Lakes Symposium on VLSI (GLSVLSI)"
+  venue_short: "GLSVLSI"
+  year: 2023
+  project: /projects/edge-mpq
+- title: "AI Hardware and RISC-V AI Extensions (guest lecture)"
+  venue: "University of Virginia, AI Hardware course"
+  venue_short: "UVA"
+  year: 2023

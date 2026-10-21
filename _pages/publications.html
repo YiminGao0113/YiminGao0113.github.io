@@ -18,3 +18,22 @@ author_profile: true
   </ol>
   {% endif %}
 {% endfor %}
+
+<h2 class="pub-section">Talks</h2>
+<ol class="pub-list">
+  {% for talk in site.data.talks %}
+  <li class="pub">
+    <div class="pub__badge">
+      <span class="pub__venue">{{ talk.venue_short }}</span>
+      <span class="pub__year">{{ talk.year }}</span>
+    </div>
+    <div class="pub__body">
+      <div class="pub__title">{{ talk.title }}</div>
+      <div class="pub__meta">
+        <i>{{ talk.venue }}</i>
+        {% if talk.project %}<span class="pub__links"><a href="{{ talk.project }}">Project</a></span>{% endif %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
