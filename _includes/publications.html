@@ -1,0 +1,14 @@
+<h2 id="publications">Publications</h2>
+<p>Also on <a href="{{ site.google_scholar }}">Google Scholar</a>.</p>
+
+<div class="publications">
+{% for category in site.publication_category %}
+  {% assign pubs = site.publications | where: "category", category[0] | reverse %}
+  {% if pubs.size > 0 %}
+  <h3>{{ category[1].title }}</h3>
+  <ol class="bibliography">
+    {% for post in pubs %}{% include pub-entry.html pub=post %}{% endfor %}
+  </ol>
+  {% endif %}
+{% endfor %}
+</div>

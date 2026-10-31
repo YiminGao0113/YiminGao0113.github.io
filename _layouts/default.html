@@ -1,31 +1,71 @@
----
-layout: compress
----
-
-{% include base_path %}
-
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.default_theme == "dark" %} data-theme="dark"{% endif %}>
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    {% include head.html %}
-    {% include head/custom.html %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+
+    <link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon-180x180.png' | relative_url }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        {% if site.avatar %}
+        <a class="image avatar" href="{{ '/' | relative_url }}"><img src="{{ site.avatar | relative_url }}" alt="Yimin Gao"></a>
+        {% endif %}
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+        <h1><a href="{{ '/' | relative_url }}" class="site-name">{{ site.title }}</a></h1>
 
-    {{ content }}
+        {% if site.position %}<position style="font-size:1.10rem;">{{ site.position }}</position><br>{% endif %}
+        {% if site.affiliation %}<a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a><br>{% endif %}
+        {% if site.email %}<email><a href="mailto:{{ site.email }}"><autocolor>{{ site.email }}</autocolor></a></email>{% endif %}
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
+        <br>
+        <br>
+        <div class="social-icons">
+          {% if site.google_scholar %}<a href="{{ site.google_scholar }}" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar" style="font-size:1.2rem"></i></a>{% endif %}
+          {% if site.cv_link %}<a href="{{ site.cv_link | relative_url }}" title="CV" aria-label="CV"><i class="ai ai-cv" style="font-size:1.3rem;"></i></a>{% endif %}
+          {% if site.github_link %}<a href="{{ site.github_link }}" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>{% endif %}
+          {% if site.linkedin %}<a href="{{ site.linkedin }}" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>{% endif %}
+          {% if site.orcid %}<a href="{{ site.orcid }}" title="ORCID" aria-label="ORCID"><i class="ai ai-orcid" style="font-size:1.2rem"></i></a>{% endif %}
+        </div>
+
+        <nav class="site-nav">
+          <a href="{{ '/#research' | relative_url }}">Research</a>
+          <a href="{{ '/#publications' | relative_url }}">Publications</a>
+          <a href="{{ '/#service' | relative_url }}">Service</a>
+          <a href="{{ '/personal/' | relative_url }}">Beyond research</a>
+        </nav>
+      </header>
+
+      <section>
+        {% if page.url != "/" and page.title %}
+        <p class="back-link"><a href="{{ '/' | relative_url }}">&larr; Home</a></p>
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.tagline %}<p class="page-tagline">{{ page.tagline }}</p>{% endif %}
+        {% if page.status %}<p class="page-status">{{ page.status }}</p>{% endif %}
+        {% endif %}
+
+        {{ content }}
+
+        {% if page.collection == "publications" %}
+        <p class="page-citation">{{ page.citation }}</p>
+        <p class="links">
+          {% if page.paperurl %}<a href="{{ page.paperurl }}" class="btn">{% if page.category == 'patents' %}Patent{% else %}Paper{% endif %}</a>{% endif %}
+          {% if page.project %}<a href="{{ page.project | relative_url }}" class="btn">Project</a>{% endif %}
+        </p>
+        {% endif %}
+
+        <br>
+        <p><small>&copy; {{ site.time | date: '%Y' }} {{ site.title }} &middot; Last updated {{ site.time | date: '%B %Y' }}{% if site.enable_footnote %} &middot; Powered by Jekyll and <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a>{% endif %}</small></p>
+      </section>
     </div>
-
-    {% include scripts.html %}
-
   </body>
 </html>

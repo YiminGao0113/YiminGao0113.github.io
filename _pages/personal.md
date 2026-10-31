@@ -1,8 +1,6 @@
 ---
-layout: archive
 title: "Beyond research"
 permalink: /personal/
-author_profile: true
 ---
 
 Two dogs run this household, and neither of them cares about AI accelerators.

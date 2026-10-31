@@ -1,0 +1,169 @@
+/* Additions on top of Minimal Light: body type (from its font.css), a small
+   sidebar nav, subpage headers, badge-only publication rows, and the figure
+   and photo styles the project and personal pages use. */
+
+body {
+  background-color: #fff;
+  font: 16.0px/1.5 Crimson Pro, serif;
+  color: #595959;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background-color: #20212b; color: #dadbdf; }
+}
+
+h1 a.site-name, h1 a.site-name:hover { color: inherit; }
+
+/* The vendored sheet styles `header ul` as a button bar, so the nav uses
+   bare links rather than a list. */
+.site-nav {
+  margin-top: 1.4em;
+  line-height: 2;
+
+  a { display: block; font-size: 1.05rem; }
+}
+
+@media print, screen and (max-width: 960px) {
+  .site-nav a { display: inline-block; margin: 0 0.6em; }
+}
+
+h4 { margin: 0 0 6px; }
+section ul { margin: 0 0 18px; }
+
+/* --- Subpages ----------------------------------------------------------- */
+
+.back-link { margin: 0 0 1em; font-size: 0.95rem; }
+.page-title { margin-bottom: 6px; }
+.page-tagline { font-size: 1.15rem; font-style: italic; margin: 0 0 4px; }
+.page-status,
+.project-status {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.85rem;
+  color: #888;
+}
+.page-status { margin: 0 0 28px; }
+.page-citation { font-size: 0.95rem; }
+
+/* --- Publications: badge column, no teaser image ------------------------ */
+
+.publications ol.bibliography li .abbr {
+  height: auto;
+  flex: 0 0 5.5rem;
+  margin: 0.2rem 0 0;
+  text-align: center;
+
+  abbr { position: static; padding: 0.3em 0.5em; white-space: normal; }
+}
+
+.publications .pub-row { align-items: flex-start; }
+.publications .pub-body { padding-left: 1rem; }
+.publications h3 { margin: 22px 0 12px; }
+.publications ol.bibliography li { min-height: 0; margin-bottom: 1.1rem; }
+.publications .author,
+.publications .periodical { font-size: 0.95rem; }
+.publications .links { margin-top: 3px; }
+.pub-note { color: #e74d3c; margin-left: 4px; }
+
+.btn {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #000 !important;
+
+  &:hover { color: var(--global-theme-color) !important; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn { color: #fff !important; }
+}
+
+@media print, screen and (max-width: 480px) {
+  .publications ol.bibliography li .abbr { text-align: left; margin-bottom: 4px; }
+  .publications .pub-body { padding-left: 0; }
+}
+
+.project-list li { margin-bottom: 6px; }
+
+/* --- Project figures ---------------------------------------------------- */
+/* Inline SVG diagrams inherit the text colour through currentColor, so they
+   follow dark mode. */
+
+.project-figure {
+  margin: 2em 0;
+
+  svg, img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  svg { color: inherit; overflow: visible; }
+  img { border-radius: 4px; }
+
+  figcaption {
+    margin-top: 0.8em;
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: center;
+    opacity: 0.8;
+  }
+}
+
+/* Figures lifted from a paper are drawn for white paper; keep them on white
+   in dark mode too. */
+.project-figure--paper img {
+  padding: 0.75em;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+}
+
+.pf-accent      { fill: var(--global-theme-color); }
+.pf-accent-line { stroke: var(--global-theme-color); fill: none; stroke-width: 1.5; }
+.pf-fill        { fill: currentColor; opacity: 0.14; }
+.pf-fill-strong { fill: currentColor; opacity: 0.30; }
+.pf-line        { stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.5; }
+.pf-line-soft   { stroke: currentColor; fill: none; stroke-width: 1; opacity: 0.22; }
+.pf-box         { stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.45; }
+.pf-text        { fill: currentColor; font-size: 12px; opacity: 0.85; font-family: "Ubuntu Mono", monospace; }
+.pf-text-sm     { fill: currentColor; font-size: 10.5px; opacity: 0.6; font-family: "Ubuntu Mono", monospace; }
+.pf-text-hd     { fill: currentColor; font-size: 12.5px; font-weight: 700; opacity: 0.9; font-family: "Ubuntu Mono", monospace; }
+.pf-text-ac     { fill: var(--global-theme-color); font-size: 12px; font-weight: 700; font-family: "Ubuntu Mono", monospace; }
+
+/* --- Photos (Beyond research) ------------------------------------------- */
+
+.photo-hero,
+.photo-single,
+.photo-grid figure {
+  margin: 0 0 1.6em;
+
+  img { display: block; width: 100%; height: auto; border-radius: 4px; }
+
+  figcaption { margin-top: 0.4em; font-size: 0.95rem; font-style: italic; opacity: 0.8; }
+}
+
+.photo-hero img { max-height: 30em; object-fit: cover; object-position: center 35%; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2em;
+
+  img { aspect-ratio: 3 / 4; object-fit: cover; }
+}
+
+/* Five icons fit on one row of the 232px sidebar with a tighter gap. */
+.social-icons a { margin-right: 0.35rem; }
+
+.publications .title { color: #222; }
+.project-status { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .publications .title { color: #eeeff0; }
+}
