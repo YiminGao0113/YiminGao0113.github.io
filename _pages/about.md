@@ -20,6 +20,8 @@ My work spans the full stack: RTL design, NPU and SoC integration, compilers and
 - **Hardware–software co-design:** quantization, compilers and runtimes, design space exploration
 - **Hardware security:** PUFs and lightweight primitives for IoT and RFID
 
+{% include publications.html %}
+
 <h2 id="research">Research</h2>
 
 <ul class="project-list">
@@ -28,8 +30,6 @@ My work spans the full stack: RTL design, NPU and SoC integration, compilers and
   <li><a href="{{ project.url | relative_url }}"><strong>{{ project.title }}</strong></a>: {{ project.tagline }}. <span class="project-status">{{ project.status }}</span></li>
 {% endfor %}
 </ul>
-
-{% include publications.html %}
 
 ## Talks
 
