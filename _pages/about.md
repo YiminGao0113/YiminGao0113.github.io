@@ -3,7 +3,6 @@ permalink: /
 redirect_from:
   - /about/
   - /about.html
-  - /projects/
   - /publications/
   - /teaching/
 ---
@@ -21,15 +20,6 @@ My work spans the full stack: RTL design, NPU and SoC integration, compilers and
 - **Hardware security:** PUFs and lightweight primitives for IoT and RFID
 
 {% include publications.html %}
-
-<h2 id="research">Research</h2>
-
-<ul class="project-list">
-{% assign projects = site.projects | sort: "order" %}
-{% for project in projects %}
-  <li><a href="{{ project.url | relative_url }}"><strong>{{ project.title }}</strong></a>: {{ project.tagline }}. <span class="project-status">{{ project.status }}</span></li>
-{% endfor %}
-</ul>
 
 ## Talks
 

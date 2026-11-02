@@ -178,3 +178,68 @@ section ul { margin: 0 0 18px; }
 @media (prefers-color-scheme: dark) {
   .publications .title { color: #eeeff0; }
 }
+
+/* Research page: the project-card grid carried over from the Academic Pages
+   site. Quiet cards -- a hairline border and one accent colour on hover. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1em;
+  margin: 1em 0 2em;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2em 1.3em;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 4px;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+  &:hover, &:focus-visible {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+.project-card__status {
+  margin-bottom: 0.6em;
+  color: var(--global-text-color-light);
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.project-card__title { margin: 0 0 0.2em; font-size: 1.4rem; line-height: 1.2; color: var(--global-theme-color); }
+.project-card__tagline { margin: 0 0 0.7em; font-size: 1rem; font-weight: bold; line-height: 1.35; }
+.project-card__excerpt { margin: 0 0 1em; font-size: 0.9rem; line-height: 1.5; opacity: 0.85; }
+.project-card__keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0 0 1.1em;
+  padding: 0;
+  list-style: none;
+  li {
+    margin: 0;
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    background-color: rgba(128, 128, 128, 0.12);
+    color: var(--global-text-color-light);
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 12px;
+  }
+}
+.project-card__more {
+  margin-top: auto;
+  color: var(--global-theme-color);
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+@media (hover: hover) {
+  .project-card:hover .project-card__more span { display: inline-block; transform: translateX(4px); transition: transform 0.2s ease-out; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .project-card:hover .project-card__more span { transition: none; }
+}
