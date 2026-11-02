@@ -247,3 +247,19 @@ section ul { margin: 0 0 18px; }
 /* Smooth-scroll the sidebar's in-page links (Publications, Service). */
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Slide between pages (cross-document view transitions; browsers without support just navigate).
+   Going deeper slides left, returning home or going Back slides right. The sidebar stays put. */
+@view-transition { navigation: auto; }
+header { view-transition-name: site-header; }
+@keyframes vt-out-left  { to   { transform: translateX(-30%); opacity: 0; } }
+@keyframes vt-in-right  { from { transform: translateX(30%);  opacity: 0; } }
+@keyframes vt-out-right { to   { transform: translateX(30%);  opacity: 0; } }
+@keyframes vt-in-left   { from { transform: translateX(-30%); opacity: 0; } }
+::view-transition-old(root) { animation: 0.35s cubic-bezier(0.4, 0, 0.2, 1) both vt-out-left; }
+::view-transition-new(root) { animation: 0.35s cubic-bezier(0.4, 0, 0.2, 1) both vt-in-right; }
+html:active-view-transition-type(back)::view-transition-old(root) { animation-name: vt-out-right; }
+html:active-view-transition-type(back)::view-transition-new(root) { animation-name: vt-in-left; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}

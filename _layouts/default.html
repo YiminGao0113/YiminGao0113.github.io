@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <script>
+      // Mark the page slide as "back" when heading home or going Back, so it slides the other way.
+      window.addEventListener("pagereveal", function (e) {
+        if (!e.viewTransition || !window.navigation || !navigation.activation) return;
+        var a = navigation.activation, home = {{ '/' | relative_url | jsonify }};
+        var back = new URL(a.entry.url).pathname === home ||
+          (a.navigationType === "traverse" && a.from && a.entry.index < a.from.index);
+        if (back) e.viewTransition.types.add("back");
+      });
+    </script>
   </head>
   <body>
     <div class="wrapper">
