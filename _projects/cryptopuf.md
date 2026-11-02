@@ -5,7 +5,7 @@ order: 5
 permalink: /projects/cryptopuf
 tagline: "A lightweight, ML-resilient strong PUF built from a weak PUF and a crypto core"
 status: "IEEE RFID-TA 2024 · GF12 tapeout ongoing"
-keywords: ["hardware security", "PUF", "ML-resilient", "IoT", "RFID"]
+keywords: ["hardware security", "PUF", "ML-resilient", "IoT", "cryptography"]
 excerpt: "Strong PUFs are vulnerable to machine-learning modeling attacks, while crypto cores resist them but lack an intrinsic key. Combining the two addresses both weaknesses."
 ---
 

@@ -17,7 +17,7 @@ My work spans the full stack: RTL design, NPU and SoC integration, compilers and
 
 - **AI accelerator architecture:** LLM inference, precision-scalable datapaths, NPUs
 - **Hardware–software co-design:** quantization, compilers and runtimes, design space exploration
-- **Hardware security:** PUFs and lightweight primitives for IoT and RFID
+- **Hardware security:** PUFs and cryptography
 
 {% include publications.html %}
 
