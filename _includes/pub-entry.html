@@ -6,8 +6,9 @@
 {% assign pub = include.pub %}
 {% assign pub_authors = pub.citation | split: ". (" | first %}
 {% assign pub_authors_tail = pub_authors | slice: -5, 5 %}
+{% assign pub_first = pub.citation | slice: 0, 13 %}
 {% if pub_authors_tail == "et al" %}{% assign pub_authors = pub_authors | append: "." %}{% endif %}
-<li>
+<li{% if pub_first == "<b>Y. Gao</b>" %} class="first-author"{% endif %}>
 <div class="pub-row">
   <div class="abbr"><abbr class="badge">{{ pub.venue_short | default: pub.venue }}</abbr></div>
   <div class="pub-body">
@@ -17,6 +18,7 @@
     <div class="links">
       {% if pub.paperurl %}<a href="{{ pub.paperurl }}" class="btn" target="_blank" rel="noopener">{% if pub.category == 'patents' %}Patent{% else %}Paper{% endif %}</a>{% endif %}
       {% if pub.project %}<a href="{{ pub.project | relative_url }}" class="btn">Project</a>{% endif %}
+      {% if pub_first == "<b>Y. Gao</b>" %}<span class="first-author-tag">First author</span>{% endif %}
       {% if pub.note %}<strong><i class="pub-note">{{ pub.note }}</i></strong>{% endif %}
     </div>
   </div>

@@ -65,6 +65,17 @@ section ul { margin: 0 0 18px; }
 .publications .periodical { font-size: 0.95rem; }
 .publications .links { margin-top: 3px; }
 .pub-note { color: #e74d3c; margin-left: 4px; }
+.publications ol.bibliography li.first-author { border-left: 3px solid var(--global-theme-color); padding-left: 10px; margin-left: -13px; }
+.publications li.first-author .title { font-weight: 700; }
+.first-author-tag {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0.05rem 0.5rem;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #fff;
+  background: var(--global-theme-color);
+}
 
 .btn {
   display: inline-block;
