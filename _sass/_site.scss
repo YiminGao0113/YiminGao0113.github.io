@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
+@media all {
   body { background-color: #20212b; color: #dadbdf; }
 }
 
@@ -89,7 +89,7 @@ section ul { margin: 0 0 18px; }
   &:hover { color: var(--global-theme-color) !important; }
 }
 
-@media (prefers-color-scheme: dark) {
+@media all {
   .btn { color: #fff !important; }
 }
 
@@ -175,7 +175,7 @@ section ul { margin: 0 0 18px; }
 .publications .title { color: #222; }
 .project-status { display: block; }
 
-@media (prefers-color-scheme: dark) {
+@media all {
   .publications .title { color: #eeeff0; }
 }
 
@@ -263,3 +263,6 @@ html:active-view-transition-type(back)::view-transition-new(root) { animation-na
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
 }
+
+/* Dark mode only: the theme's former prefers-color-scheme: dark blocks are now @media all. */
+:root { color-scheme: dark; }
