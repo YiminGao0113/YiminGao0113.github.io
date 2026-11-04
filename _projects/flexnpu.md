@@ -5,12 +5,45 @@ order: 2
 permalink: /projects/flexnpu
 redirect_from:
   - /projects/edgescope
-tagline: "A full-stack edge NPU platform with host-aware design space exploration"
+tagline: "A full-stack FPGA NPU platform: architecture, compiler, and runtime"
 status: "Platform in silicon · tool in submission"
-keywords: ["NPU", "MLIR / IREE", "compiler and runtime", "design space exploration", "host bottleneck"]
-excerpt: "Existing design space exploration tools model the accelerator in isolation and can allocate area to workloads that are not compute-bound. FlexNPU treats the host CPU as a first-class resource."
+keywords: ["NPU", "RISC-V", "systolic array", "vector unit", "MLIR / IREE", "compiler and runtime", "design space exploration"]
+excerpt: "An end-to-end NPU on a Xilinx Kria KV260: a RISC-V controller, systolic matrix engine, and vector unit, a custom MLIR/IREE compiler backend, and a C/C++ host runtime."
 featured: true
 ---
+
+FlexNPU is an end-to-end AI accelerator platform I built on a Xilinx Kria KV260
+(Zynq SoC), covering the whole stack: the NPU architecture, a custom compiler
+backend, and the host runtime.
+
+Architecture
+======
+
+The NPU integrates a **RISC-V controller**, a **systolic matrix engine**, and a
+**vector unit**, which broadens ML operator coverage beyond what the matrix
+engine handles. Data moves through on-chip scratchpad memory with dedicated load and store DMA
+engines, inside a double-buffered RTL shell with AXI DMA.
+
+Compiler
+======
+
+Custom MLIR/IREE passes lower ML operators (GEMM, softmax, depthwise convolution)
+onto the accelerator. The compiler talks to the hardware through a register and
+DMA interface, so RTL datapath variants can be swapped **without rebuilding the
+compiler or recompiling the model**. The compiled binary binds to that interface
+rather than to a particular tile size, so every hardware configuration runs one
+unchanged binary. Any single design change can be measured end-to-end in
+isolation, with nothing else moving.
+
+Runtime
+======
+
+A C/C++ runtime on the Zynq's ARM host sequences the accelerator through the
+compiled operator stream. The platform reaches up to **31× end-to-end speedup on
+MobileBERT INT8** over the on-chip ARM CPU.
+
+Host-aware design space exploration
+======
 
 Design space exploration tools — Timeloop, MAESTRO, roofline analysis — model the
 accelerator in isolation: compute against memory, with the host CPU outside the
@@ -24,7 +57,8 @@ represent it. The practical consequence is that they'll happily recommend spendi
 your whole area budget on a bigger array for a workload that was never
 compute-bound.
 
-FlexNPU's design space exploration treats the host as a first-class resource alongside compute, memory, and
+FlexNPU's design space exploration treats the host as a first-class resource
+alongside compute, memory, and
 dispatch, and allocates a fixed area budget across two coupled axes: **sizing**,
 making the operators you already offload run faster, and **coverage**, moving whole
 operator classes onto the accelerator to relieve the host.
@@ -87,23 +121,5 @@ coverage-alone does nothing while compute is still binding. Only a loop that
 watches the bottleneck *shift* finds "grow, then cover" — and the allocator finds
 it on its own rather than being told. It also declines to spend when nothing helps,
 from the same code path, with no special case.
-
-The platform
-======
-
-Any of this is only trustworthy if the measurements are. Underneath is FlexNPU
-itself, an end-to-end AI accelerator platform I developed on a Xilinx Kria KV260
-(Zynq SoC) — custom compiler backend, custom C/C++ runtime, and a double-buffered
-RTL shell with AXI DMA.
-
-Custom MLIR/IREE passes lower ML operators (GEMM, softmax, depthwise convolution)
-onto the accelerator slots, and an ARM-host runtime with a register and DMA
-interface can swap RTL tiles **without recompiling the model**. The compiled binary
-binds to the slot contract rather than to a particular tile size, so every
-configuration runs one unchanged binary — which means any single design change can
-be measured end-to-end in isolation, with nothing else moving.
-
-The platform reaches up to **31× end-to-end speedup on MobileBERT INT8** over the
-on-chip ARM CPU.
 
 *Platform running in silicon. DSE tool in submission.*
