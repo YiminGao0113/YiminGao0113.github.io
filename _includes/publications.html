@@ -6,10 +6,11 @@
   {% assign pubs = site.publications | where: "category", category[0] | reverse %}
   {% if pubs.size > 0 %}
   <h3>{{ category[1].title }}</h3>
-  {% comment %} First-author papers lead each category; both groups stay newest-first. {% endcomment %}
+  {% comment %} First-author papers lead each category, then highlighted ones (e.g. awards), then the rest; each group newest-first. {% endcomment %}
   <ol class="bibliography">
     {% for post in pubs %}{% assign lead = post.citation | slice: 0, 13 %}{% if lead == "<b>Y. Gao</b>" %}{% include pub-entry.html pub=post %}{% endif %}{% endfor %}
-    {% for post in pubs %}{% assign lead = post.citation | slice: 0, 13 %}{% if lead != "<b>Y. Gao</b>" %}{% include pub-entry.html pub=post %}{% endif %}{% endfor %}
+    {% for post in pubs %}{% assign lead = post.citation | slice: 0, 13 %}{% if lead != "<b>Y. Gao</b>" and post.highlight %}{% include pub-entry.html pub=post %}{% endif %}{% endfor %}
+    {% for post in pubs %}{% assign lead = post.citation | slice: 0, 13 %}{% if lead != "<b>Y. Gao</b>" and post.highlight != true %}{% include pub-entry.html pub=post %}{% endif %}{% endfor %}
   </ol>
   {% endif %}
 {% endfor %}

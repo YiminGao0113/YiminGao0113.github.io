@@ -266,3 +266,9 @@ html:active-view-transition-type(back)::view-transition-new(root) { animation-na
 
 /* Dark mode only: the theme's former prefers-color-scheme: dark blocks are now @media all. */
 :root { color-scheme: dark; }
+
+/* Publications: award papers share the first-author accent bar; a light rule separates entries
+   so each venue line reads as belonging to the title above it. */
+.publications ol.bibliography li.highlighted { border-left: 3px solid var(--global-theme-color); padding-left: 10px; margin-left: -13px; }
+.publications ol.bibliography li + li { border-top: 1px solid rgba(255, 255, 255, 0.09); padding-top: 0.9rem; }
+.publications ol.bibliography li { margin-bottom: 0.9rem; }

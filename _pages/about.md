@@ -50,6 +50,7 @@ My work spans the full stack: RTL design, NPU and SoC integration, compilers and
 
 <h4>Honors</h4>
 <ul>
+  <li><strong>Best Paper Award</strong>, IEEE International Conference on Computer Design (ICCD), 2026</li>
   <li>DAC Young Fellow, Design Automation Conference, 2023</li>
 </ul>
 

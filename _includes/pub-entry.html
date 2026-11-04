@@ -8,7 +8,7 @@
 {% assign pub_authors_tail = pub_authors | slice: -5, 5 %}
 {% assign pub_first = pub.citation | slice: 0, 13 %}
 {% if pub_authors_tail == "et al" %}{% assign pub_authors = pub_authors | append: "." %}{% endif %}
-<li{% if pub_first == "<b>Y. Gao</b>" %} class="first-author"{% endif %}>
+<li{% if pub_first == "<b>Y. Gao</b>" %} class="first-author"{% elsif pub.highlight %} class="highlighted"{% endif %}>
 <div class="pub-row">
   <div class="abbr"><abbr class="badge">{{ pub.venue_short | default: pub.venue }}</abbr></div>
   <div class="pub-body">
