@@ -5,121 +5,103 @@ order: 2
 permalink: /projects/flexnpu
 redirect_from:
   - /projects/edgescope
-tagline: "A full-stack FPGA NPU platform: architecture, compiler, and runtime"
-status: "Platform in silicon · tool in submission"
-keywords: ["NPU", "RISC-V", "systolic array", "vector unit", "MLIR / IREE", "compiler and runtime", "design space exploration"]
-excerpt: "An end-to-end NPU on a Xilinx Kria KV260: a RISC-V controller, systolic matrix engine, and vector unit, a custom MLIR/IREE compiler backend, and a C/C++ host runtime."
+tagline: "An open, end-to-end NPU research platform, from PyTorch to RTL on an FPGA"
+status: "Running end-to-end on FPGA · open-source release planned"
+keywords: ["NPU", "RISC-V", "systolic array", "vector unit", "MLIR / IREE", "PyTorch", "custom quantization", "cycle-accurate simulation"]
+excerpt: "An NPU that keeps ML operators off the host CPU: a matrix engine for GEMM, a vector unit for reductions, and a RISC-V core for the rest, with one flow from PyTorch down to RTL on an FPGA."
 featured: true
 ---
 
-FlexNPU is an end-to-end AI accelerator platform I built on a Xilinx Kria KV260
-(Zynq SoC), covering the whole stack: the NPU architecture, a custom compiler
-backend, and the host runtime.
+An NPU is only as fast as the operators it can't run. Every operator that falls
+back to the host CPU costs a round trip: data out to the CPU, compute on a core
+that was never meant for it, data back. On an edge SoC, those fallbacks can end
+up dominating the whole model.
 
-Architecture
+FlexNPU's goal is to run the full ML operator set on the accelerator, so a model
+never has to go back to the CPU. The other goal is to expose the whole stack,
+from the PyTorch model down to the RTL, so other researchers can build on it.
+
+Full operator coverage
 ======
 
-The NPU integrates a **RISC-V controller**, a **systolic matrix engine**, and a
-**vector unit**, which broadens ML operator coverage beyond what the matrix
-engine handles. Data moves through on-chip scratchpad memory with dedicated load and store DMA
-engines, inside a double-buffered RTL shell with AXI DMA.
-
-Compiler
-======
-
-Custom MLIR/IREE passes lower ML operators (GEMM, softmax, depthwise convolution)
-onto the accelerator. The compiler talks to the hardware through a register and
-DMA interface, so RTL datapath variants can be swapped **without rebuilding the
-compiler or recompiling the model**. The compiled binary binds to that interface
-rather than to a particular tile size, so every hardware configuration runs one
-unchanged binary. Any single design change can be measured end-to-end in
-isolation, with nothing else moving.
-
-Runtime
-======
-
-A C/C++ runtime on the Zynq's ARM host sequences the accelerator through the
-compiled operator stream. The platform reaches up to **31× end-to-end speedup on
-MobileBERT INT8** over the on-chip ARM CPU.
-
-Host-aware design space exploration
-======
-
-Design space exploration tools — Timeloop, MAESTRO, roofline analysis — model the
-accelerator in isolation: compute against memory, with the host CPU outside the
-design space entirely.
-
-On an edge NPU that's a bad assumption. The host isn't a spectator. It sequences
-the accelerator through a compiled operator stream and does real per-operator work
-along the way, and on many workloads that host work is what actually sets the
-wall. It isn't that these tools weigh the host wrongly — they structurally cannot
-represent it. The practical consequence is that they'll happily recommend spending
-your whole area budget on a bigger array for a workload that was never
-compute-bound.
-
-FlexNPU's design space exploration treats the host as a first-class resource
-alongside compute, memory, and
-dispatch, and allocates a fixed area budget across two coupled axes: **sizing**,
-making the operators you already offload run faster, and **coverage**, moving whole
-operator classes onto the accelerator to relieve the host.
-
-Grow, then cover
-======
-
-Those axes don't decompose, which is the part worth knowing.
+Each class of operator has a home on the NPU.
 
 <figure class="project-figure">
-<svg viewBox="0 0 680 280" role="img" aria-labelledby="pf-es-t pf-es-d">
-  <title id="pf-es-t">The bottleneck moves when the array grows</title>
-  <desc id="pf-es-d">Two bar charts. With a small array, compute is the tallest bar and the binding resource. After growing the array, compute shrinks below host, and the host becomes the tallest bar and the new bottleneck.</desc>
+<svg viewBox="0 0 680 300" role="img" aria-labelledby="pf-cov-t pf-cov-d">
+  <title id="pf-cov-t">Every operator class maps to a unit on the NPU</title>
+  <desc id="pf-cov-d">Three operator classes on the left map to three units inside the NPU: GEMM and convolution to the matrix engine, reductions such as softmax and normalization to the vector unit, and everything else to the RISC-V core. The host CPU is drawn faded at the bottom with a crossed-out fallback path.</desc>
 
-  <text class="pf-text-hd" x="60" y="40">Small array</text>
-  <text class="pf-text-hd" x="420" y="40">After growing the array</text>
+  <text class="pf-text-hd" x="20" y="34">ML operators</text>
+  <rect class="pf-fill" x="20" y="50"  width="190" height="44" rx="4"/>
+  <text class="pf-text" x="34" y="77">GEMM · convolution</text>
+  <rect class="pf-fill" x="20" y="110" width="190" height="44" rx="4"/>
+  <text class="pf-text" x="34" y="137">softmax · norms · reductions</text>
+  <rect class="pf-fill" x="20" y="170" width="190" height="44" rx="4"/>
+  <text class="pf-text" x="34" y="197">control · everything else</text>
 
-  <line class="pf-line" x1="50" y1="220" x2="285" y2="220"/>
-  <line class="pf-line" x1="410" y1="220" x2="645" y2="220"/>
+  <rect class="pf-box" x="330" y="20" width="330" height="214" rx="6"/>
+  <text class="pf-text-hd" x="346" y="42">FlexNPU</text>
+  <rect class="pf-accent" x="370" y="50"  width="270" height="44" rx="4" opacity="0.9"/>
+  <rect class="pf-accent" x="370" y="110" width="270" height="44" rx="4" opacity="0.65"/>
+  <rect class="pf-accent" x="370" y="170" width="270" height="44" rx="4" opacity="0.45"/>
+  <text x="505" y="77"  text-anchor="middle" style="fill:#fff;font:700 12.5px 'Ubuntu Mono',monospace">matrix engine (systolic)</text>
+  <text x="505" y="137" text-anchor="middle" style="fill:#fff;font:700 12.5px 'Ubuntu Mono',monospace">vector unit (reduction path)</text>
+  <text x="505" y="197" text-anchor="middle" style="fill:#fff;font:700 12.5px 'Ubuntu Mono',monospace">RISC-V core</text>
 
-  <text class="pf-text-ac" x="80" y="62" text-anchor="middle">bottleneck</text>
-  <rect class="pf-accent" x="60"  y="70"  width="40" height="150"/>
-  <rect class="pf-fill"   x="116" y="172" width="40" height="48"/>
-  <rect class="pf-fill"   x="172" y="206" width="40" height="14"/>
-  <rect class="pf-fill"   x="228" y="134" width="40" height="86"/>
+  <path class="pf-accent-line" d="M214 72 L362 72"/><path class="pf-accent-line" d="M354 66 L362 72 L354 78"/>
+  <path class="pf-accent-line" d="M214 132 L362 132"/><path class="pf-accent-line" d="M354 126 L362 132 L354 138"/>
+  <path class="pf-accent-line" d="M214 192 L362 192"/><path class="pf-accent-line" d="M354 186 L362 192 L354 198"/>
 
-  <text class="pf-text-sm" x="80"  y="238" text-anchor="middle">compute</text>
-  <text class="pf-text-sm" x="136" y="238" text-anchor="middle">memory</text>
-  <text class="pf-text-sm" x="192" y="238" text-anchor="middle">dispatch</text>
-  <text class="pf-text-sm" x="248" y="238" text-anchor="middle">host</text>
-
-  <path class="pf-accent-line" d="M305 150 L385 150"/>
-  <path class="pf-accent-line" d="M377 144 L385 150 L377 156"/>
-  <text class="pf-text-ac" x="345" y="140" text-anchor="middle">grow</text>
-
-  <text class="pf-text-ac" x="608" y="126" text-anchor="middle">bottleneck</text>
-  <rect class="pf-fill"   x="420" y="166" width="40" height="54"/>
-  <rect class="pf-fill"   x="476" y="172" width="40" height="48"/>
-  <rect class="pf-fill"   x="532" y="206" width="40" height="14"/>
-  <rect class="pf-accent" x="588" y="134" width="40" height="86"/>
-
-  <text class="pf-text-sm" x="440" y="238" text-anchor="middle">compute</text>
-  <text class="pf-text-sm" x="496" y="238" text-anchor="middle">memory</text>
-  <text class="pf-text-sm" x="552" y="238" text-anchor="middle">dispatch</text>
-  <text class="pf-text-sm" x="608" y="238" text-anchor="middle">host</text>
-
-  <text class="pf-text-sm" x="340" y="270" text-anchor="middle">The host work was always there — compute was just hiding it.</text>
+  <rect class="pf-box" x="20" y="250" width="190" height="34" rx="4" stroke-dasharray="4 4" opacity="0.3"/>
+  <text class="pf-text-sm" x="115" y="271" text-anchor="middle">host CPU</text>
+  <path class="pf-line-soft" d="M330 230 L214 262" stroke-dasharray="4 4"/>
+  <path class="pf-accent-line" d="M264 236 L280 256 M280 236 L264 256"/>
+  <text class="pf-text-ac" x="300" y="280">no fallback</text>
 </svg>
-<figcaption>Growing the array doesn't only shrink compute. It exposes the host, which is where the next spend has to go.</figcaption>
+<figcaption>GEMM goes to the matrix engine, reductions to the vector unit, and the rest to the RISC-V core, so nothing has to go back to the host CPU.</figcaption>
 </figure>
 
-Start small on a transformer workload and it's compute-bound, so growing the array
-is the right move and a coverage unit would buy nothing. Grow it far enough and the
-bottleneck flips to the host — the CPU-side work was there all along, just hidden
-behind compute. Now the coverage unit, worthless a few steps earlier, becomes the
-best remaining spend.
+The **matrix engine** is a systolic array for GEMM and convolution. The **vector
+unit** provides the reduction path, for operators like softmax and normalization.
+A **RISC-V core** inside the NPU handles control and the remaining operators that
+fit neither. Data moves through on-chip scratchpad memory with dedicated load and
+store DMA engines.
 
-Explore either axis alone and you stop short. Array-alone runs into the host wall;
-coverage-alone does nothing while compute is still binding. Only a loop that
-watches the bottleneck *shift* finds "grow, then cover" — and the allocator finds
-it on its own rather than being told. It also declines to spend when nothing helps,
-from the same code path, with no special case.
+Several ML models already run end-to-end on the FPGA. Coverage isn't at 100% yet,
+and closing that gap is the current work.
 
-*Platform running in silicon. DSE tool in submission.*
+From PyTorch to RTL
+======
+
+FlexNPU is one flow, not a hardware demo and a software demo side by side. A
+**PyTorch front end** feeds custom **MLIR/IREE** passes that lower each operator
+onto its unit. A C/C++ runtime on the Zynq's ARM host launches the compiled program.
+The design itself is RTL running on a Xilinx Kria KV260. **Custom quantization**
+is supported through the whole flow.
+
+The compiler reaches the hardware through a register and DMA interface rather
+than a fixed tile size. You can swap an RTL datapath variant without rebuilding
+the compiler or recompiling the model, so a single design change can be measured
+end-to-end in isolation.
+
+Built to be tuned
+======
+
+The platform exposes knobs at every layer, and it lets you see what they do:
+
+- **Hardware performance counters** measure compute and data movement inside the
+  NPU in real time, on the board.
+- A **cycle-accurate simulator** models the same architecture, so you can sweep
+  the design space without building every configuration in hardware.
+
+NPU design space exploration
+======
+
+With counters on the board and a simulator next to it, FlexNPU supports design
+space exploration of the whole NPU and its host. Tools like Timeloop and MAESTRO
+model the accelerator in isolation and leave the host out. One thing whole-system
+exploration shows: growing the matrix engine can shift the bottleneck somewhere
+else, so the best use of area interleaves sizing the array with widening operator
+coverage.
+
+*Running end-to-end on FPGA. Ongoing project; open-source release planned.*
