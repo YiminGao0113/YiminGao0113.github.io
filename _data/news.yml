@@ -1,16 +1,17 @@
-# News, newest first. Rendered at the top of the home page. date is year/month only.
+# News, newest first. Rendered under About Me on the home page. date is year/month only.
+# Markup: <strong> = award (gold), <em> = paper name (theme blue), <b> = venue (bold).
 - date: 2026/11
-  text: "Selected as a <strong>LAD'26 Fellow</strong> at the International Conference on LLM-Aided Design (LAD)."
+  text: "Selected as a <strong>LAD'26 Fellow</strong> at the <b>International Conference on LLM-Aided Design (LAD)</b>."
 - date: 2026/11
-  text: "Our paper <em>High-Performance Low-Power Adiabatic Systolic Array Design in Advanced FinFET Nodes</em> received the <strong>Best Paper Award</strong> at ICCD 2026."
+  text: "Our <em>adiabatic systolic array</em> paper received the <strong>Best Paper Award</strong> at <b>ICCD 2026</b>."
 - date: 2026/08
-  text: "First-author paper <em>FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators</em> accepted to MICRO 2026."
+  text: "First-author paper <em>FlexPosit</em> accepted to <b>MICRO 2026</b>."
   link: /projects/flexposit
 - date: 2024/12
-  text: "First-author paper <em>CryptoPUF: A Lightweight and ML-Resilient Strong PUF Based on a Weak PUF and Crypto Core</em> presented at RFID-TA 2024."
+  text: "First-author paper <em>CryptoPUF</em> presented at <b>RFID-TA 2024</b>."
   link: https://ieeexplore.ieee.org/document/10965172
 - date: 2023/09
-  text: "First-author paper <em>LiteAIR5: A System-Level Framework for the Design and Modeling of AI-Extended RISC-V Cores</em> presented at SOCC 2023."
+  text: "First-author paper <em>LiteAIR5</em> presented at <b>SOCC 2023</b>."
   link: https://ieeexplore.ieee.org/document/10257058
 - date: 2023/04
-  text: "Selected as a <strong>DAC Young Fellow</strong> at the Design Automation Conference."
+  text: "Selected as a <strong>DAC Young Fellow</strong> at the <b>Design Automation Conference</b>."
