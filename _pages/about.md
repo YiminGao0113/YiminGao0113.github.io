@@ -7,6 +7,13 @@ redirect_from:
   - /teaching/
 ---
 
+<h2 id="news">News</h2>
+<ul class="news">
+{% for item in site.data.news %}
+  <li><span class="news-date">{{ item.date }}</span> <span class="news-text">{{ item.text }}{% if item.link %} <a href="{% if item.link contains '://' %}{{ item.link }}{% else %}{{ item.link | relative_url }}{% endif %}">[link]</a>{% endif %}</span></li>
+{% endfor %}
+</ul>
+
 ## About Me
 
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), where I work in the [High-Performance Low-Power Lab (HPLP)](https://engineering.virginia.edu/labs-groups/high-performance-low-power-lab) with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
@@ -52,6 +59,7 @@ My research centers on LLM inference accelerators and quantization–hardware co
 
 <h4>Honors</h4>
 <ul>
+  <li>LAD'26 Fellow, International Conference on LLM-Aided Design (LAD), 2026</li>
   <li><strong>Best Paper Award</strong>, IEEE International Conference on Computer Design (ICCD), 2026</li>
   <li>DAC Young Fellow, Design Automation Conference, 2023</li>
 </ul>
