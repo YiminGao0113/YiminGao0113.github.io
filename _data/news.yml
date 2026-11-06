@@ -3,8 +3,8 @@
   text: "Selected as a <strong>LAD'26 Fellow</strong> at the International Conference on LLM-Aided Design (LAD)."
 - date: 2026/11
   text: "Our paper on adiabatic systolic arrays in advanced FinFET nodes received the <strong>Best Paper Award</strong> at ICCD 2026."
-- date: 2026/10
-  text: "First-author paper <em>FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators</em> to appear at MICRO 2026."
+- date: 2026/08
+  text: "First-author paper <em>FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators</em> accepted to MICRO 2026."
   link: /projects/flexposit
 - date: 2024/12
   text: "First-author paper <em>CryptoPUF: A Lightweight and ML-Resilient Strong PUF</em> presented at RFID-TA 2024."
