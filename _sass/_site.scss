@@ -281,4 +281,6 @@ ul.news .news-date { flex: 0 0 4.2rem; font-variant-numeric: tabular-nums; color
 ul.news .news-text strong { color: var(--global-hover-color); }
 ul.news .news-text em { font-style: normal; font-weight: 600; color: var(--global-theme-color); }
 ul.news .news-text b { font-weight: 600; }
+ul.news .news-text a { text-decoration: none; }
+ul.news .news-text a:hover em { text-decoration: underline; }
 ul.news .news-text { flex: 1 1 auto; min-width: 0; }

@@ -18,7 +18,9 @@ My research centers on LLM inference accelerators and quantization–hardware co
 <h2 id="news">News</h2>
 <ul class="news">
 {% for item in site.data.news %}
-  <li><span class="news-date">{{ item.date }}</span> <span class="news-text">{{ item.text }}{% if item.link %} <a href="{% if item.link contains '://' %}{{ item.link }}{% else %}{{ item.link | relative_url }}{% endif %}">[link]</a>{% endif %}</span></li>
+  {% comment %} With a link, the paper name (the <em>) becomes the link. {% endcomment %}
+  {% assign text = item.text %}{% if item.link %}{% if item.link contains '://' %}{% assign href = item.link %}{% else %}{% assign href = item.link | relative_url %}{% endif %}{% assign open = '<a href="' | append: href | append: '"><em>' %}{% assign text = text | replace: '<em>', open | replace: '</em>', '</em></a>' %}{% endif %}
+  <li><span class="news-date">{{ item.date }}</span> <span class="news-text">{{ text }}</span></li>
 {% endfor %}
 </ul>
 
