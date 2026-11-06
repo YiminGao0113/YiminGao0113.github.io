@@ -2,15 +2,15 @@
 - date: 2026/11
   text: "Selected as a <strong>LAD'26 Fellow</strong> at the International Conference on LLM-Aided Design (LAD)."
 - date: 2026/11
-  text: "Our paper on adiabatic systolic arrays in advanced FinFET nodes received the <strong>Best Paper Award</strong> at ICCD 2026."
+  text: "Our paper <em>High-Performance Low-Power Adiabatic Systolic Array Design in Advanced FinFET Nodes</em> received the <strong>Best Paper Award</strong> at ICCD 2026."
 - date: 2026/08
   text: "First-author paper <em>FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators</em> accepted to MICRO 2026."
   link: /projects/flexposit
 - date: 2024/12
-  text: "First-author paper <em>CryptoPUF: A Lightweight and ML-Resilient Strong PUF</em> presented at RFID-TA 2024."
+  text: "First-author paper <em>CryptoPUF: A Lightweight and ML-Resilient Strong PUF Based on a Weak PUF and Crypto Core</em> presented at RFID-TA 2024."
   link: https://ieeexplore.ieee.org/document/10965172
 - date: 2023/09
-  text: "First-author paper <em>LiteAIR5: AI-Extended RISC-V Cores</em> presented at SOCC 2023."
+  text: "First-author paper <em>LiteAIR5: A System-Level Framework for the Design and Modeling of AI-Extended RISC-V Cores</em> presented at SOCC 2023."
   link: https://ieeexplore.ieee.org/document/10257058
 - date: 2023/04
   text: "Selected as a <strong>DAC Young Fellow</strong> at the Design Automation Conference."
