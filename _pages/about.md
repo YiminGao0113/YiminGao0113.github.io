@@ -9,11 +9,15 @@ redirect_from:
 
 ## About Me
 
+<div class="bio" markdown="1">
+
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), where I work in the [High-Performance Low-Power Lab (HPLP)](https://engineering.virginia.edu/labs-groups/high-performance-low-power-lab) with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
 
 My work spans the full stack: RTL design, physical design through signoff and tapeout (GF12), NPU and SoC integration, compilers and runtimes, FPGA prototyping, and cycle-accurate simulation in C++.
 
 My research centers on LLM inference accelerators and quantization–hardware co-design, alongside lightweight security primitives for resource-constrained devices.
+
+</div>
 
 <h2 id="news">News</h2>
 <ul class="news">
@@ -44,6 +48,7 @@ My research centers on LLM inference accelerators and quantization–hardware co
 
 <h4>Program Committee</h4>
 <ul>
+  <li>Student Program Committee, ACM/IEEE International Symposium on Computer Architecture (ISCA), 2027</li>
   <li>Student Program Committee, IEEE/ACM International Symposium on Microarchitecture (MICRO), 2026</li>
 </ul>
 
@@ -61,7 +66,7 @@ My research centers on LLM inference accelerators and quantization–hardware co
 
 <h4>Honors</h4>
 <ul>
-  <li>LAD'26 Fellow, International Conference on LLM-Aided Design (LAD), 2026</li>
+  <li>2026 LAD Fellowship ($10,000; 11 of 52 selected) for LLM-driven NPU design space exploration, International Conference on LLM-Aided Design (LAD)</li>
   <li><strong>Best Paper Award</strong>, IEEE International Conference on Computer Design (ICCD), 2026</li>
   <li>DAC Young Fellow, Design Automation Conference, 2023</li>
 </ul>

@@ -277,10 +277,17 @@ html:active-view-transition-type(back)::view-transition-new(root) { animation-na
 ul.news { list-style: none; padding-left: 0; }
 ul.news li { display: flex; gap: 0.9rem; margin-bottom: 0.45rem; }
 ul.news .news-date { flex: 0 0 4.2rem; font-variant-numeric: tabular-nums; color: var(--global-text-color-light); }
-/* Color by role: award gold, paper name theme blue, venue bold in the body color. */
+/* Color by role: award gold, venue theme blue and italic, paper name in the
+   body color. A linked paper name keeps the body color and is bold; underline on hover. */
 ul.news .news-text strong { color: var(--global-hover-color); }
-ul.news .news-text em { font-style: normal; font-weight: 600; color: var(--global-theme-color); }
-ul.news .news-text b { font-weight: 600; }
-ul.news .news-text a { text-decoration: none; }
-ul.news .news-text a:hover em { text-decoration: underline; }
+ul.news .news-text b { font-weight: normal; font-style: italic; color: var(--global-theme-color); }
+ul.news .news-text em { font-style: normal; color: inherit; }
+ul.news .news-text a { color: inherit; font-weight: 600; text-decoration: none; }
+ul.news .news-text a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Bio: links in a soft steel blue, upright -- still read as links, but much
+   calmer than the theme blue. Underline appears on hover only. */
+.bio a { color: #8fb3cf; text-decoration: none; }
+.bio a:hover { text-decoration: underline; text-underline-offset: 2px; }
 ul.news .news-text { flex: 1 1 auto; min-width: 0; }
+

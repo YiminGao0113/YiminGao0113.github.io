@@ -1,9 +1,11 @@
 # News, newest first. Rendered under About Me on the home page. date is year/month only.
-# Markup: <strong> = award (gold), <em> = paper name (theme blue), <b> = venue (bold).
+# Markup: <strong> = award (gold), <em> = paper name (plain; the link when one is given), <b> = venue (theme blue, italic).
 - date: 2026/11
-  text: "Selected as a <strong>LAD'26 Fellow</strong> at the <b>International Conference on LLM-Aided Design (LAD)</b>."
+  text: "Awarded the <strong>2026 LAD Fellowship</strong> ($10,000; 11 of 52 selected) by the <b>International Conference on LLM-Aided Design (LAD)</b> for LLM-driven NPU design space exploration on <em>FlexNPU</em>."
+  link: /projects/flexnpu
 - date: 2026/11
   text: "Our <em>adiabatic systolic array</em> paper received the <strong>Best Paper Award</strong> at <b>ICCD 2026</b>."
+  link: https://arxiv.org/abs/2608.30058
 - date: 2026/08
   text: "First-author paper <em>FlexPosit</em> accepted to <b>MICRO 2026</b>."
   link: /projects/flexposit

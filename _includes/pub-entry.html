@@ -16,7 +16,7 @@
     <div class="author">{{ pub_authors }}</div>
     <div class="periodical"><em>{{ pub.venue }}</em>, {{ pub.date | date: "%Y" }}.</div>
     <div class="links">
-      {% if pub.paperurl %}<a href="{{ pub.paperurl }}" class="btn" target="_blank" rel="noopener">{% if pub.category == 'patents' %}Patent{% else %}Paper{% endif %}</a>{% endif %}
+      {% if pub.paperurl %}<a href="{{ pub.paperurl }}" class="btn" target="_blank" rel="noopener">{% if pub.category == 'patents' %}Patent{% elsif pub.paperurl contains 'arxiv.org' %}arXiv{% else %}Paper{% endif %}</a>{% endif %}
       {% if pub.project %}<a href="{{ pub.project | relative_url }}" class="btn">Project</a>{% endif %}
       {% if pub_first == "<b>Y. Gao</b>" %}<span class="first-author-tag">First author</span>{% endif %}
       {% if pub.note %}<strong><i class="pub-note">{{ pub.note }}</i></strong>{% endif %}

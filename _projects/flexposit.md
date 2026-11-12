@@ -99,5 +99,5 @@ at runtime — P from 4 to 8 bits, es from 0 to 2.
   <figcaption>Post-layout view of the GF12 test chip. The array dominates the die; the decoders and precision control are a thin strip along the bottom.</figcaption>
 </figure>
 
-*To appear at the IEEE/ACM International Symposium on Microarchitecture
+*Presented at the IEEE/ACM International Symposium on Microarchitecture
 (MICRO) 2026.*
