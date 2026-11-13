@@ -13,7 +13,7 @@ redirect_from:
 
 I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), where I work in the [High-Performance Low-Power Lab (HPLP)](https://engineering.virginia.edu/labs-groups/high-performance-low-power-lab) with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan).
 
-My research centers on LLM inference accelerators, built through hardware–software co-design.
+My research centers on LLM inference accelerators and hardware–software co-design, from the accelerator architecture down to end-to-end deployment on NPUs through custom MLIR-based compiler lowering.
 
 My work spans the full stack: RTL design, physical design through signoff and tapeout (GF12), NPU and SoC integration, compilers and runtimes, FPGA prototyping, and cycle-accurate simulation in C++.
 
