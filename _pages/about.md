@@ -15,7 +15,7 @@ I'm a PhD student in [Electrical and Computer Engineering](https://engineering.v
 
 My research centers on LLM inference accelerators and hardware–software co-design, from the accelerator architecture down to end-to-end deployment on NPUs through custom MLIR-based compiler lowering.
 
-My work spans the full stack: RTL design, physical design through signoff and tapeout (GF12), NPU and SoC integration, compilers and runtimes, FPGA prototyping, and cycle-accurate simulation in C++.
+Hands-on, I work across the stack: RTL design, physical design through signoff and tapeout (GF12), SoC integration, FPGA prototyping, and cycle-accurate simulation in C++.
 
 </div>
 
