@@ -11,11 +11,11 @@ redirect_from:
 
 <div class="bio" markdown="1">
 
-I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), where I work in the [High-Performance Low-Power Lab (HPLP)](https://engineering.virginia.edu/labs-groups/high-performance-low-power-lab) with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan) on efficient and secure hardware for edge AI.
+I'm a PhD student in [Electrical and Computer Engineering](https://engineering.virginia.edu/departments/electrical-and-computer-engineering) at the [University of Virginia](https://www.virginia.edu/), where I work in the [High-Performance Low-Power Lab (HPLP)](https://engineering.virginia.edu/labs-groups/high-performance-low-power-lab) with [Prof. Mircea R. Stan](https://engineering.virginia.edu/faculty/mircea-r-stan).
+
+My research centers on LLM inference accelerators, built through hardware–software co-design.
 
 My work spans the full stack: RTL design, physical design through signoff and tapeout (GF12), NPU and SoC integration, compilers and runtimes, FPGA prototyping, and cycle-accurate simulation in C++.
-
-My research centers on LLM inference accelerators and quantization–hardware co-design, alongside lightweight security primitives for resource-constrained devices.
 
 </div>
 
@@ -27,12 +27,6 @@ My research centers on LLM inference accelerators and quantization–hardware co
   <li><span class="news-date">{{ item.date }}</span> <span class="news-text">{{ text }}</span></li>
 {% endfor %}
 </ul>
-
-## Research Interests
-
-- **AI accelerator architecture:** LLM inference, precision-scalable datapaths, NPUs
-- **Hardware–software co-design:** quantization, compilers and runtimes, design space exploration
-- **Hardware security:** PUFs and cryptography
 
 {% include publications.html %}
 
